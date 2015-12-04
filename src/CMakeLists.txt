@@ -20,14 +20,18 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 
 if(${USE_FORTRAN_SUBDIRECTORY})
   include(CMakeAddFortranSubdirectory)
-  cmake_add_fortran_subdirectory(win_fortran
-    PROJECT win_fortran  # project name in toplevel CMakeLists.txt in lapack
-    ARCHIVE_DIR win_fortran # .lib location relative to root binary tree
-    RUNTIME_DIR win_fortran # .dll location relative to root binary tree
-    LIBRARIES win_fortran # target libraries created
+  cmake_add_fortran_subdirectory(qld_fortran
+    PROJECT qld_fortran  # project name in toplevel CMakeLists.txt in lapack
+    ARCHIVE_DIR qld_fortran # .lib location relative to root binary tree
+    RUNTIME_DIR qld_fortran # .dll location relative to root binary tree
+    LIBRARIES qld_fortran # target libraries created
     LINK_LIBRARIES  # link interface libraries
     NO_EXTERNAL_INSTALL)
-  target_link_libraries(${PROJECT_NAME} win_fortran)
+  target_link_libraries(${PROJECT_NAME} qld_fortran)
+  if(WIN32)
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran.dll DESTINATION ${CMAKE_INSTALL_BINDIR})
+	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran.lib DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  endif()
 endif()
 
 if(${USE_F2C})

@@ -73,7 +73,17 @@ private:
 	int fail_;
 	VectorXd U_;
 	VectorXd WAR_;
-	VectorXi IWAR_;
+  VectorXi IWAR_;
+  EIGEN_QLD_API inline int fortran_ql(const int* m, const int* me, const int* mmax,
+      const int* n, const int* nmax, const int* mnn,
+      const double* c, const double* d, const double* a, const double* b,
+      const double* xl, const double* xu,
+      double* x, double* u, const double* eps, const int *mode,
+      const int* iout, int* ifail, const int* iprint,
+      double* war, int *lwar, int *iwar, int *liwar)
+  {
+    return ql_(m, me, mmax, n, nmax, mnn, c, d, a, b, xl, xu, x, u, eps, mode, iout, ifail, iprint, war, lwar, iwar, liwar);
+  }
 };
 
 
@@ -122,7 +132,7 @@ inline bool QLD::solve(const MatrixBase<MatObj>& Q, const MatrixBase<VecObj>& C,
 	B_.segment(0, nreq) = Beq;
 	B_.segment(nreq, nrineq) = Bineq;
 
-	ql_(&M, &nreq, &MMAX, &N, &NMAX, &NMN,
+	fortran_ql(&M, &nreq, &MMAX, &N, &NMAX, &NMN,
 		Q.derived().data(), C.derived().data(), A_.data(), B_.data(),
 		XL.derived().data(), XU.derived().data(), X_.data(),
 		U_.data(), &eps, &MODE, &fdOut_, &fail_, &verbose_,
