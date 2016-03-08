@@ -1,6 +1,8 @@
 # eigen-qld
 
 [![License LGPL 3](https://img.shields.io/badge/license-LGPLv3-green.svg)](http://www.gnu.org/licenses/lgpl-3.0.txt)
+[![Build Status](https://travis-ci.org/jrl-umi3218/eigen-qld.svg?branch=master)](https://travis-ci.org/jrl-umi3218/eigen-qld)
+[![AppVeyor status](https://ci.appveyor.com/api/projects/status/wlds1vauvfvmfspj/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/eigen-qld/branch/master)
 
 eigen-qld allow to use the QLD QP solver with the Eigen3 library.
 
@@ -48,4 +50,9 @@ To update cmake directory with their upstream git repository:
 ```
 git fetch git://github.com/jrl-umi3218/jrl-cmakemodules.git master
 git subtree pull --prefix cmake git://github.com/jrl-umi3218/jrl-cmakemodules.git master --squash
+```
+
+```
+git fetch git://github.com/jrl-umi3218/jrl-travis.git master
+git subtree pull --prefix .jrl-ci git://github.com/jrl-umi3218/jrl-travis.git master --squash
 ```
