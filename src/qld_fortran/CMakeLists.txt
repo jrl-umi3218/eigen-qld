@@ -15,14 +15,11 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with eigen-qld.  If not, see <http://www.gnu.org/licenses/>.
 
-project(win_fortran Fortran)
+project(qld_fortran Fortran)
 
 set(QLD_FORT 
   ../QLD/f/QLD.f
 )
 
-add_library(win_fortran ${QLD_FORT})
-install(TARGETS win_fortran
-    RUNTIME DESTINATION "bin"
-    LIBRARY DESTINATION "lib"
-    ARCHIVE DESTINATION "lib")
+add_library(qld_fortran ${QLD_FORT})
+set_target_properties(qld_fortran PROPERTIES IMPORT_SUFFIX ".lib")

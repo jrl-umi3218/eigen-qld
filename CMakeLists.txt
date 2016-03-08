@@ -25,8 +25,6 @@ set(PROJECT_NAME eigen-qld)
 set(PROJECT_DESCRIPTION "QLD QP solver through Eigen3 library.")
 set(PROJECT_URL "https://github.com/eigen-qld/RBDyn/eigen-qld")
 
-project(${PROJECT_NAME} CXX)
-
 # Disable -Werror on Unix for now.
 set(CXX_DISABLE_WERROR True)
 set(DOXYGEN_USE_MATHJAX "YES")
