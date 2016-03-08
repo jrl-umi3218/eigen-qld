@@ -1,5 +1,7 @@
 # eigen-qld
 
+[![License LGPL 3](https://img.shields.io/badge/license-LGPLv3-green.svg)](http://www.gnu.org/licenses/lgpl-3.0.txt)
+
 eigen-qld allow to use the QLD QP solver with the Eigen3 library.
 
 ## Installing
@@ -23,7 +25,7 @@ To compile you need the following tools:
 #### Building
 
 ```sh
-git clone --recursive https://github.com/jorisv/eigen-qld
+git clone --recursive https://github.com/jrl-umi3218/eigen-qld
 cd eigen-qld
 mkdir _build
 cd _build
