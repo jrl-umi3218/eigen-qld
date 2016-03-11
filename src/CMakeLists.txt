@@ -34,6 +34,7 @@ elseif(NOT ${USE_FORTRAN_SUBDIRECTORY})
 endif()
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
+set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
 
 if(${USE_FORTRAN_SUBDIRECTORY})
   include(CMakeAddFortranSubdirectory)
