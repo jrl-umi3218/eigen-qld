@@ -1,0 +1,5 @@
+eigen-qld (1.0.0-1trusty1) trusty; urgency=medium
+
+  * Initial release.
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Fri, 11 Mar 2016 10:40:17 +0900

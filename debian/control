@@ -1,0 +1,51 @@
+Source: eigen-qld
+Priority: optional
+Maintainer: Pierre Gergondet <pierre.gergondet+ppa@gmail.com>
+Standards-Version: 3.9.5
+Section: libs
+Homepage: http://github.com/jrl-umi3218/eigen-qld
+Vcs-Git: git://github.com/jrl-umi3218/eigen-qld -b debian
+Vcs-Browser: http://github.com/jrl-umi3218/eigen-qld
+Build-Depends: debhelper (>= 9),
+               pkg-config,
+               cmake,
+               doxygen,
+               gfortran,
+               libboost-test-dev,
+               libboost-timer-dev,
+               libboost-system-dev,
+               libeigen3-dev (>= 3.2)
+
+Package: libeigen-qld-dev
+Section: libdevel
+Architecture: any
+Depends: pkg-config,
+         libeigen3-dev (>= 3.2),
+         libeigen-qld1 (= ${binary:Version}),
+         ${misc:Depends}
+Suggests: libeigen-qld-doc
+Description: eigen-qld - development files
+ eigen-qld allow to use the QLD QP solver with the Eigen3 library.
+ .
+ This package contains development files (headers and shared library
+ symbolic link).
+
+
+Package: libeigen-qld1
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: eigen-qld: dynamics of rigid body systems
+ eigen-qld allow to use the QLD QP solver with the Eigen3 library.
+
+Package: libeigen-qld-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Multi-Arch: foreign
+Suggests: libeigen-qld-dev
+Description: eigen-qld API documentation
+ eigen-qld allow to use the QLD QP solver with the Eigen3 library.
+ .
+ This package provides the complete API documentation in HTML format.

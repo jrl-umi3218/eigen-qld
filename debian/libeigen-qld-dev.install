@@ -1,0 +1,3 @@
+usr/include/*
+usr/lib/*/libeigen-qld.so
+usr/lib/*/pkgconfig/*
