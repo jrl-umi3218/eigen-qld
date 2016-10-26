@@ -48,7 +48,7 @@ if(${USE_FORTRAN_SUBDIRECTORY})
   target_link_libraries(${PROJECT_NAME} qld_fortran)
   if(WIN32)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran.dll DESTINATION ${CMAKE_INSTALL_BINDIR})
-	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran.lib DESTINATION ${CMAKE_INSTALL_LIBDIR})
+	  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran.lib DESTINATION ${CMAKE_INSTALL_LIBDIR})
   endif()
 endif()
 
@@ -56,10 +56,18 @@ if(${USE_F2C})
   target_link_libraries(${PROJECT_NAME} libf2c.a)
 endif()
 
-set(INSTALL_PATH include/${PROJECT_NAME})
-install(FILES ${HEADERS} DESTINATION ${INSTALL_PATH})
-install(TARGETS ${PROJECT_NAME}
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+# Targets:
+#   * <prefix>/lib/libbar.a
+#   * <prefix>/lib/libbaz.a
+#   * header location after install: <prefix>/include/foo/Bar.hpp
+#   * headers can be included by C++ code `#include <foo/Bar.hpp>`
+install(
+    TARGETS ${PROJECT_NAME}
+    EXPORT "${TARGETS_EXPORT_NAME}"
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}"
+)
+install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION})
 
