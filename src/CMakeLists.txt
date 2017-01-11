@@ -56,11 +56,6 @@ if(${USE_F2C})
   target_link_libraries(${PROJECT_NAME} libf2c.a)
 endif()
 
-# Targets:
-#   * <prefix>/lib/libbar.a
-#   * <prefix>/lib/libbaz.a
-#   * header location after install: <prefix>/include/foo/Bar.hpp
-#   * headers can be included by C++ code `#include <foo/Bar.hpp>`
 install(
     TARGETS ${PROJECT_NAME}
     EXPORT "${TARGETS_EXPORT_NAME}"
