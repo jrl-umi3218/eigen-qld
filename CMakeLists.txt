@@ -69,3 +69,4 @@ add_subdirectory(tests)
 pkg_config_append_libs(${PROJECT_NAME})
 
 setup_project_finalize()
+SETUP_PROJECT_PACKAGE_FINALIZE()
