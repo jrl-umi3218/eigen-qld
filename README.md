@@ -4,18 +4,45 @@
 [![Build Status](https://travis-ci.org/jrl-umi3218/eigen-qld.svg?branch=master)](https://travis-ci.org/jrl-umi3218/eigen-qld)
 [![AppVeyor status](https://ci.appveyor.com/api/projects/status/wlds1vauvfvmfspj/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/eigen-qld/branch/master)
 
-eigen-qld allow to use the QLD QP solver with the Eigen3 library.
+eigen-qld provides an interface to use the [QLD QP solver](https://help.scilab.org/doc/5.5.2/en_US/qld.html) with the [Eigen3](https://eigen.tuxfamily.org) library.
 
 ## Installing
 
-### Manual
+
+### Ubuntu 14.04 and 16.04 binary ppa install
+
+Use the [multi-contact-unstable](https://launchpad.net/~pierre-gergondet+ppa/+archive/ubuntu/multi-contact-unstable) ppa:
+```bash
+sudo add-apt-repository ppa:pierre-gergondet+ppa/multi-contact-unstable
+sudo apt-get update
+sudo apt-get install eigen-qld
+```
+
+### Homebrew OS X install
+
+Install from the command line using [Homebrew](brew.sh):
+
+```bash
+# install homebrew package manager
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install caskroom application manager
+brew install caskroom/cask/brew-cask
+# tap homebrew-science package repository
+brew tap homebrew/science
+# tap ahundt-robotics repository
+brew tap ahundt/robotics
+# install tasks and all its dependencies
+brew install eigen-qld
+```
+
+## Manually build from source
 
 #### Dependencies
 
 To compile you need the following tools:
 
  * [Git]()
- * [CMake]() >= 2.8
+ * [CMake](cmake.org) >= 2.8
  * [pkg-config]()
  * [doxygen]()
  * [g++]()
