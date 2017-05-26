@@ -16,7 +16,7 @@
 // along with eigen-qld.  If not, see <http://www.gnu.org/licenses/>.
 
 // associated header
-#include "QLD.h"
+#include "eigen-qld/QLD.h"
 
 // includes
 

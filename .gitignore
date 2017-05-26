@@ -1,0 +1,7 @@
+*.pyc
+*~
+binding/python/build/
+binding/python/eigen_qld/eigen_qld.cpp
+binding/python/eigen_qld/eigen_qld.so
+binding/python/eigen_qld/__init__.py
+binding/python/setup.py
