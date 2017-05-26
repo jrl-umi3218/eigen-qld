@@ -22,7 +22,7 @@ elseif(${USE_F2C})
 endif()
 
 set(SOURCES QLD.cpp)
-set(HEADERS eigen_qld_api.h QLD.h)
+set(HEADERS eigen-qld/eigen_qld_api.h eigen-qld/QLD.h)
 
 set(QLD_FORT QLD/f/QLD.f)
 set(QLD_C QLD/c/QLD.c)

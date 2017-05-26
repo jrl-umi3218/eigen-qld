@@ -30,7 +30,7 @@
 #include <Eigen/Dense>
 
 // EigenQP
-#include <QLD.h>
+#include <eigen-qld/QLD.h>
 
 
 struct QP1

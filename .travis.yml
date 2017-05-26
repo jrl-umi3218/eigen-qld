@@ -1,38 +1,38 @@
-# Copyright 2015-2016 CNRS-UM LIRMM, CNRS-AIST JRL
-#
-# This file is part of eigen-qld.
-#
-# eigen-qld is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# eigen-qld is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public License
-# along with eigen-qld.  If not, see <http://www.gnu.org/licenses/>.
 sudo: required
 dist: trusty
 language: cpp
 compiler:
-  - gcc
-  - clang
+- gcc
+- clang
 env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev gfortran"
   - GIT_DEPENDENCIES=""
+  matrix:
+  - USE_PYTHON34=false
+  - USE_PYTHON34=true
 notifications:
-  email:
-  - pierre.gergondet@gmail.com
+  slack:
+    secure: GfSvOYWJb5LM3NZbuK9PtQN6Ge7RUvfK7H1PQy55hPCVnac4ZMDg49phqkuoN1FCKDxfH9COsxFJ6ZUgOVU/ZLq/3MX3UBiE56N+T+C1St/V1caeELUPYSr0P7Fnbjk1DEO3EBthv3iP6lK3WLyXMZkOrbpVgM0xakR/vUsWSP/Fhdm5R+sNYmS2BTMzUibX9o7M4ZWb4UTPOGBvVQq1pSLJ/cVLBEo/IE+S1VHKvcc5CGdptkXdexezi7i9qtB5jvP40zpBYEzxdne5a/KJLtcWGPHcvnRlEZwYzO8oNw1IqdBC/2tIUIfl8zj0qUnJIiWyWUotIMF3dQHHBY5Ehvzrcq2jVctdbGkN1Jo3T+pM6FkT7JXuGJJ/NuMMpQDgMSoXDVpMbPufutqE4ZFwr1XU6gkNvGwIcXl94pVEGx0csNxc3L9egSGjsmYdSWKToltU78ydCEjPpILe8hUtBn0R11WmbBdPlKR1WPCdasLuvKMHpwDU4/U4qpuaDcgIo04lPasfeUMtgkfSkV/oWeCntV88T/aX55uaOeSARwKPuqRahDdRzUrxEVsNDQXguiBMSNrbTCYlv1BOuIgZikucZuzdcq84/0LSJgvf9bon29bTu/1M0N4rSpJJOKgE5kab9E7fQ3EAULH5odTtPxqwZmqzFnI3bW16qP8RxXs=
 script: ./.jrl-ci/run build
 after_success: ./.jrl-ci/run after_success
 after_failure: ./.jrl-ci/run after_failure
 before_install:
-  - ./.jrl-ci/dependencies/eigen-3.2
-  - ./.jrl-ci/run  before_install
+- if [ $USE_PYTHON34 = true ]; then pushd .; pip install virtualenv; mkdir -p /tmp/_ci/virtualenv; virtualenv -p python3.4 3.4; source 3.4/bin/activate; popd; fi
+- ./.jrl-ci/dependencies/eigen-3.2
+- pushd .
+- cd /tmp/_ci/build
+- export install_dir=/tmp/_ci/install
+- export OLD_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
+- export PKG_CONFIG_PATH="$install_dir/lib/pkgconfig:$install_dir/share/pkgconfig:$PKG_CONFIG_PATH"
+- git clone -b topic/Cython https://github.com/jrl-umi3218/Eigen3ToPython
+- cd Eigen3ToPython
+- pip install -r requirements.txt
+- pip install . -vvv
+- export PKG_CONFIG_PATH=$OLD_PKG_CONFIG_PATH
+- unset install_dir
+- popd
+- ./.jrl-ci/run  before_install
 matrix:
   allow_failures:
-    - compiler: clang
+  - compiler: clang
