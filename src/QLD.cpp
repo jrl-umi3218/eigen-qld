@@ -106,5 +106,9 @@ const VectorXd& QLD::result() const
 	return X_;
 }
 
+const VectorXd& QLD::multipliers() const
+{
+	return U_;
+}
 
 } // namespace Eigen

@@ -57,6 +57,9 @@ public:
 
 	EIGEN_QLD_API const VectorXd& result() const;
 
+	/** Return the lagrange multipliers associated with results **/
+	EIGEN_QLD_API const VectorXd& multipliers() const;
+
 	template <typename MatObj, typename VecObj,
 						typename MatEq, typename VecEq,
 						typename MatIneq, typename VecIneq,
