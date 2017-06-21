@@ -41,5 +41,6 @@ cdef class QLD(object):
   def solve(self, eigen.MatrixXd Q, eigen.VectorXd C,
                   eigen.MatrixXd Aeq, eigen.VectorXd Beq,
                   eigen.MatrixXd Aineq, eigen.VectorXd Bineq,
-                  eigen.VectorXd XL, eigen.VectorXd XU):
-    return self.impl.solve(Q.impl, C.impl, Aeq.impl, Beq.impl, Aineq.impl, Bineq.impl, XL.impl, XU.impl)
+                  eigen.VectorXd XL, eigen.VectorXd XU,
+                  isDecomp=False, eps=1e-12):
+    return self.impl.solve(Q.impl, C.impl, Aeq.impl, Beq.impl, Aineq.impl, Bineq.impl, XL.impl, XU.impl, isDecomp, eps)

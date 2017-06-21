@@ -32,3 +32,8 @@ cdef extern from "<eigen-qld/QLD.h>" namespace "Eigen":
         const c_eigen.MatrixXd&, const c_eigen.VectorXd&,
         const c_eigen.MatrixXd&, const c_eigen.VectorXd&,
         const c_eigen.VectorXd&, const c_eigen.VectorXd&)
+    bool solve(const c_eigen.MatrixXd&, const c_eigen.VectorXd&,
+        const c_eigen.MatrixXd&, const c_eigen.VectorXd&,
+        const c_eigen.MatrixXd&, const c_eigen.VectorXd&,
+        const c_eigen.VectorXd&, const c_eigen.VectorXd&,
+        bool isDecomp, double eps)
