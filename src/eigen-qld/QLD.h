@@ -65,7 +65,7 @@ public:
 		const MatrixBase<MatEq>& Aeq, const MatrixBase<VecEq>& Beq,
 		const MatrixBase<MatIneq>& Aineq, const MatrixBase<VecIneq>& Bineq,
 		const MatrixBase<VecVar>& XL, const MatrixBase<VecVar>& XU,
-		double eps=1e-12);
+		bool isDecomp=false, double eps=1e-12);
 
 private:
 	MatrixXd A_;
@@ -100,7 +100,7 @@ inline bool QLD::solve(const MatrixBase<MatObj>& Q, const MatrixBase<VecObj>& C,
 	const MatrixBase<MatEq>& Aeq, const MatrixBase<VecEq>& Beq,
 	const MatrixBase<MatIneq>& Aineq, const MatrixBase<VecIneq>& Bineq,
 	const MatrixBase<VecVar>& XL, const MatrixBase<VecVar>& XU,
-	double eps)
+	bool isDecomp, double eps)
 {
 	assert(Aeq.rows() == Beq.rows()); // check equality size
 	assert(Aeq.cols() == X_.rows());
@@ -116,6 +116,8 @@ inline bool QLD::solve(const MatrixBase<MatObj>& Q, const MatrixBase<VecObj>& C,
 	int nrineq = int(Bineq.rows());
 	int nrvar = int(X_.rows());
 
+	int mode = isDecomp ? 0 : 1;
+
 	int M = nreq + nrineq;
 	int N = nrvar;
 
@@ -124,7 +126,6 @@ inline bool QLD::solve(const MatrixBase<MatObj>& Q, const MatrixBase<VecObj>& C,
 	int NMAX = int(Q.rows());
 
 	int NMN = M + 2*N;
-	int MODE = 1;
 	int LWAR = int(WAR_.rows());
 	int LIWAR = int(IWAR_.rows());
 
@@ -137,7 +138,7 @@ inline bool QLD::solve(const MatrixBase<MatObj>& Q, const MatrixBase<VecObj>& C,
 	fortran_ql(&M, &nreq, &MMAX, &N, &NMAX, &NMN,
 		Q.derived().data(), C.derived().data(), A_.data(), B_.data(),
 		XL.derived().data(), XU.derived().data(), X_.data(),
-		U_.data(), &eps, &MODE, &fdOut_, &fail_, &verbose_,
+		U_.data(), &eps, &mode, &fdOut_, &fail_, &verbose_,
 		WAR_.data(), &LWAR, IWAR_.data(), &LIWAR);
 
 	return fail_ == 0;
