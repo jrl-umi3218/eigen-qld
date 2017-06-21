@@ -7,7 +7,7 @@ compiler:
 env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev gfortran"
-  - GIT_DEPENDENCIES=""
+  - GIT_DEPENDENCIES="jrl-umi3218/Eigen3ToPython"
   matrix:
   - USE_PYTHON34=false
   - USE_PYTHON34=true
@@ -20,18 +20,6 @@ after_failure: ./.jrl-ci/run after_failure
 before_install:
 - if [ $USE_PYTHON34 = true ]; then pushd .; pip install virtualenv; mkdir -p /tmp/_ci/virtualenv; virtualenv -p python3.4 3.4; source 3.4/bin/activate; popd; fi
 - ./.jrl-ci/dependencies/eigen-3.2
-- pushd .
-- cd /tmp/_ci/build
-- export install_dir=/tmp/_ci/install
-- export OLD_PKG_CONFIG_PATH=$PKG_CONFIG_PATH
-- export PKG_CONFIG_PATH="$install_dir/lib/pkgconfig:$install_dir/share/pkgconfig:$PKG_CONFIG_PATH"
-- git clone -b topic/Cython https://github.com/jrl-umi3218/Eigen3ToPython
-- cd Eigen3ToPython
-- pip install -r requirements.txt
-- pip install . -vvv
-- export PKG_CONFIG_PATH=$OLD_PKG_CONFIG_PATH
-- unset install_dir
-- popd
 - ./.jrl-ci/run  before_install
 matrix:
   allow_failures:
