@@ -38,6 +38,8 @@ cdef class QLD(object):
     self.impl.problem(nrvar, nreq, nrineq)
   def result(self):
     return eigen.VectorXdFromC(self.impl.result())
+  def multipliers(self):
+    return eigen.VectorXdFromC(self.impl.multipliers())
   def solve(self, eigen.MatrixXd Q, eigen.VectorXd C,
                   eigen.MatrixXd Aeq, eigen.VectorXd Beq,
                   eigen.MatrixXd Aineq, eigen.VectorXd Bineq,
