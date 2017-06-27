@@ -1,3 +1,9 @@
+eigen-qld (1.0.1-1ubuntu1) unstable; urgency=medium
+
+  * Disable Python bindings build
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Tue, 27 Jun 2017 16:57:37 +0900
+
 eigen-qld (1.0.0-1trusty1) trusty; urgency=medium
 
   * Initial release.
