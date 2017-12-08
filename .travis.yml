@@ -19,6 +19,7 @@ after_success: ./.jrl-ci/run after_success
 after_failure: ./.jrl-ci/run after_failure
 before_install:
 - if [ $USE_PYTHON34 = true ]; then pushd .; pip install virtualenv; mkdir -p /tmp/_ci/virtualenv; virtualenv -p python3.4 3.4; source 3.4/bin/activate; popd; fi
+- if [ $USE_PYTHON34 = false ]; then export CMAKE_ADDITIONAL_OPTIONS="-DPYTHON_BINDING_USER_INSTALL:BOOL=ON"; fi
 - ./.jrl-ci/dependencies/eigen-3.2
 - ./.jrl-ci/run  before_install
 matrix:
