@@ -23,7 +23,7 @@ include(cmake/eigen.cmake)
 
 set(PROJECT_NAME eigen-qld)
 set(PROJECT_DESCRIPTION "QLD QP solver through Eigen3 library.")
-set(PROJECT_URL "https://github.com/eigen-qld/RBDyn/eigen-qld")
+set(PROJECT_URL "https://github.com/jrl-umi3218/eigen-qld")
 
 # Disable -Werror on Unix for now.
 set(CXX_DISABLE_WERROR True)
@@ -40,7 +40,12 @@ endif()
 setup_project()
 
 option(PYTHON_BINDING "Generate python binding." ON)
-option(PYTHON_BINDING_USER_INSTALL "Install the Python bindings in user space" OFF)
+if(WIN32)
+  set(PYTHON_BINDING_USER_INSTALL_DEFAULT ON)
+else()
+  set(PYTHON_BINDING_USER_INSTALL_DEFAULT OFF)
+endif()
+option(PYTHON_BINDING_USER_INSTALL "Install the Python bindings in user space" ${PYTHON_BINDING_USER_INSTALL_DEFAULT})
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
