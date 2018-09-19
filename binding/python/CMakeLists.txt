@@ -15,34 +15,27 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with eigen-qld.  If not, see <http://www.gnu.org/licenses/>.
 
-macro(GET_EQLD_PROPERTY PROPERTY)
-  get_target_property(EQLD_${PROPERTY} eigen-qld ${PROPERTY})
-  if(NOT EQLD_${PROPERTY})
-    set(EQLD_${PROPERTY} "")
-  endif()
-endmacro()
-GET_EQLD_PROPERTY(COMPILE_FLAGS)
-GET_EQLD_PROPERTY(INCLUDE_DIRECTORIES)
-LIST(APPEND EQLD_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/../../src)
-GET_EQLD_PROPERTY(LINK_FLAGS)
-GET_EQLD_PROPERTY(LINK_LIBRARIES)
-GET_EQLD_PROPERTY(LOCATION)
-configure_file(setup.in.py ${CMAKE_CURRENT_SOURCE_DIR}/setup.py)
+SET(SETUP_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/")
+CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/setup.in.py" "${CMAKE_CURRENT_BINARY_DIR}/setup.in.py")
+FILE(GENERATE
+      OUTPUT "${SETUP_LOCATION}/setup.py"
+      INPUT "${CMAKE_CURRENT_BINARY_DIR}/setup.in.py")
 
 # Build the bindings locally at build time for test purposes
 add_custom_target(eigen-qld-python-bindings ALL
-  COMMAND python setup.py build_ext --inplace
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMAND ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" python setup.py build_ext --inplace
   COMMENT "Generating local eigen-qld Python bindings"
   DEPENDS eigen_qld/c_eigen_qld.pxd eigen_qld/eigen_qld.pxd eigen_qld/eigen_qld.pyx
+  SOURCES eigen_qld/c_eigen_qld.pxd eigen_qld/eigen_qld.pxd eigen_qld/eigen_qld.pyx
 )
 
 if(NOT ${DISABLE_TESTS})
   add_custom_target(test-eigen-qld-python-bindings
-    COMMAND nosetests
+    COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:RBDyn>" nosetests ${SETUP_LOCATION}
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Test eigen-qld Python bindings"
     DEPENDS tests/test_eigen-qld_pickle.py
+    SOURCES tests/test_eigen-qld_pickle.py
   )
   add_test(NAME PythonBindingsTest
     COMMAND nosetests
@@ -54,10 +47,11 @@ set(PIP_EXTRA_OPTIONS "")
 if(${PYTHON_BINDING_USER_INSTALL})
   set(PIP_EXTRA_OPTIONS "--user")
 endif()
+
 # Install the bindings
 add_custom_target(install-eigen-qld-python-bindings
-  COMMAND pip install . ${PIP_EXTRA_OPTIONS}
-  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMAND ${CMAKE_COMMAND} -E chdir "${SETUP_LOCATION}" pip install . ${PIP_EXTRA_OPTIONS}
   COMMENT "Install eigen-qld Python bindings"
 )
-install(CODE "execute_process(COMMAND ${CMAKE_MAKE_PROGRAM} install-eigen-qld-python-bindings)")
+
+install(CODE "execute_process(COMMAND \"${CMAKE_COMMAND}\" --build \"${CMAKE_BINARY_DIR}\" --config \${CMAKE_INSTALL_CONFIG_NAME} --target install-eigen-qld-python-bindings)")

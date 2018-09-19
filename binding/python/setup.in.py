@@ -25,17 +25,35 @@ except ImportError:
 
 from Cython.Build import cythonize
 
+import filecmp
 import hashlib
 import os
+import shutil
 import subprocess
 
 from numpy import get_include as numpy_get_include
 
 win32_build = os.name == 'nt'
+debug_build = "$<CONFIG>".lower() == "debug"
 
 this_path  = os.path.dirname(os.path.realpath(__file__))
+for p in ['{}/{}'.format(this_path, x) for x in ['eigen_qld', 'tests']]:
+  if not os.path.exists(p):
+    os.makedirs(p)
 with open(this_path + '/eigen_qld/__init__.py', 'w') as fd:
     fd.write('from .eigen_qld import *\n')
+
+def copy_if_different(f):
+  in_ = '@CMAKE_CURRENT_SOURCE_DIR@/{}'.format(f)
+  out_ = '{}/{}'.format(this_path, f)
+  if not os.path.exists(out_) or not filecmp.cmp(in_, out_):
+    shutil.copyfile(in_, out_)
+
+copy_if_different('eigen_qld/c_eigen_qld.pxd')
+copy_if_different('eigen_qld/eigen_qld.pxd')
+copy_if_different('eigen_qld/eigen_qld.pyx')
+copy_if_different('eigen_qld/private_typedefs.h')
+copy_if_different('tests/test_qp.py')
 
 sha512 = hashlib.sha512()
 src_files = ['eigen_qld/eigen_qld.pyx', 'eigen_qld/c_eigen_qld.pxd', 'eigen_qld/eigen_qld.pxd']
@@ -54,10 +72,14 @@ version_hash = sha512.hexdigest()[:7]
 class pkg_config(object):
   def __init__(self):
     self.compile_args = []
-    self.include_dirs = [ x for x in '@EQLD_INCLUDE_DIRECTORIES@'.split(';') if len(x) ]
-    self.library_dirs = [ x for x in '@EQLD_LINK_FLAGS@'.split(';') if len(x) ]
-    self.libraries = ['eigen-qld']
-    eqld_location = '@EQLD_LOCATION@'
+    self.include_dirs = [ x for x in '$<TARGET_PROPERTY:eigen-qld,INCLUDE_DIRECTORIES>'.split(';') if len(x) ]
+    self.include_dirs.append('@PROJECT_SOURCE_DIR@/src')
+    self.library_dirs = [ x for x in '$<TARGET_PROPERTY:eigen-qld,LINK_FLAGS>'.split(';') if len(x) ]
+    if debug_build:
+      self.libraries = ['eigen-qld@PROJECT_DEBUG_POSTIFX@']
+    else:
+      self.libraries = ['eigen-qld']
+    eqld_location = '$<TARGET_FILE:eigen-qld>'
     self.library_dirs.append(os.path.dirname(eqld_location))
     self.found = True
 
@@ -70,7 +92,6 @@ if win32_build:
 
 def GenExtension(name, pkg, ):
   pyx_src = name.replace('.', '/')
-  cpp_src = pyx_src + '.cpp'
   pyx_src = pyx_src + '.pyx'
   ext_src = pyx_src
   if pkg.found:
