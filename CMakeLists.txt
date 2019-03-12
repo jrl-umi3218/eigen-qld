@@ -74,9 +74,13 @@ add_definitions("-DEIGEN_QLD_EXPORT")
 
 # For MSVC, set local environment variable to enable finding the built dll
 # of the main library when launching ctest with RUN_TESTS
-IF(MSVC)
-  SET(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
-ENDIF(MSVC)
+if(MSVC)
+  if(USE_FORTRAN_SUBDIRECTORY_DEFAULT)
+    set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration);\$(SolutionDir)/src/qld_fortran")
+  else()
+    set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
+  endif()
+endif(MSVC)
 
 add_subdirectory(src)
 add_subdirectory(tests)
