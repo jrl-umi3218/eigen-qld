@@ -31,12 +31,13 @@ set(CXX_DISABLE_WERROR True)
 set(DOXYGEN_USE_MATHJAX "YES")
 
 option(USE_F2C "Use f2c converted code (usually slower)." OFF)
-option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts" OFF)
 
 if(WIN32)
-  set(USE_F2C OFF)
-  set(USE_FORTRAN_SUBDIRECTORY ON)
+  set(USE_FORTRAN_SUBDIRECTORY_DEFAULT ON)
+else()
+  set(USE_FORTRAN_SUBDIRECTORY_DEFAULT OFF)
 endif()
+option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts" ${USE_FORTRAN_SUBDIRECTORY_DEFAULT})
 
 setup_project()
 
