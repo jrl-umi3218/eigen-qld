@@ -20,7 +20,7 @@ cmake_minimum_required(VERSION 2.8)
 include(cmake/base.cmake)
 include(cmake/boost.cmake)
 include(cmake/eigen.cmake)
-INCLUDE(cmake/msvc-specific.cmake)
+include(cmake/msvc-specific.cmake)
 
 set(PROJECT_NAME eigen-qld)
 set(PROJECT_DESCRIPTION "QLD QP solver through Eigen3 library.")
@@ -75,7 +75,7 @@ add_definitions("-DEIGEN_QLD_EXPORT")
 # For MSVC, set local environment variable to enable finding the built dll
 # of the main library when launching ctest with RUN_TESTS
 if(MSVC)
-  if(USE_FORTRAN_SUBDIRECTORY_DEFAULT)
+  if(USE_FORTRAN_SUBDIRECTORY)
     set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration);\$(SolutionDir)/src/qld_fortran")
   else()
     set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
