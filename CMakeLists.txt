@@ -20,6 +20,7 @@ cmake_minimum_required(VERSION 2.8)
 include(cmake/base.cmake)
 include(cmake/boost.cmake)
 include(cmake/eigen.cmake)
+include(cmake/msvc-specific.cmake)
 
 set(PROJECT_NAME eigen-qld)
 set(PROJECT_DESCRIPTION "QLD QP solver through Eigen3 library.")
@@ -30,12 +31,13 @@ set(CXX_DISABLE_WERROR True)
 set(DOXYGEN_USE_MATHJAX "YES")
 
 option(USE_F2C "Use f2c converted code (usually slower)." OFF)
-option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts" OFF)
 
 if(WIN32)
-  set(USE_F2C OFF)
-  set(USE_FORTRAN_SUBDIRECTORY ON)
+  set(USE_FORTRAN_SUBDIRECTORY_DEFAULT ON)
+else()
+  set(USE_FORTRAN_SUBDIRECTORY_DEFAULT OFF)
 endif()
+option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts" ${USE_FORTRAN_SUBDIRECTORY_DEFAULT})
 
 setup_project()
 
@@ -69,6 +71,16 @@ endif()
 #########################
 
 add_definitions("-DEIGEN_QLD_EXPORT")
+
+# For MSVC, set local environment variable to enable finding the built dll
+# of the main library when launching ctest with RUN_TESTS
+if(MSVC)
+  if(USE_FORTRAN_SUBDIRECTORY)
+    set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration);\$(SolutionDir)/src/qld_fortran")
+  else()
+    set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
+  endif()
+endif(MSVC)
 
 add_subdirectory(src)
 add_subdirectory(tests)

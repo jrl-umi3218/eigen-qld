@@ -36,6 +36,8 @@ add_custom_target(eigen-qld-python-bindings ALL
   SOURCES eigen_qld/c_eigen_qld.pxd eigen_qld/eigen_qld.pxd eigen_qld/eigen_qld.pyx
 )
 
+add_dependencies(eigen-qld-python-bindings eigen-qld)
+
 if(NOT ${DISABLE_TESTS})
   add_custom_target(test-eigen-qld-python-bindings
     COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:RBDyn>" nosetests ${SETUP_LOCATION}
