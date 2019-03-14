@@ -38,19 +38,9 @@ add_custom_target(eigen-qld-python-bindings ALL
 
 add_dependencies(eigen-qld-python-bindings eigen-qld)
 
-if(NOT ${DISABLE_TESTS})
-  add_custom_target(test-eigen-qld-python-bindings
-    COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:RBDyn>" nosetests ${SETUP_LOCATION}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMENT "Test eigen-qld Python bindings"
-    DEPENDS tests/test_eigen-qld_pickle.py
-    SOURCES tests/test_eigen-qld_pickle.py
-  )
-  add_test(NAME PythonBindingsTest
-    COMMAND nosetests
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  )
-endif()
+add_test(NAME PythonBindingsTest
+  COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:eigen-qld>" nosetests ${SETUP_LOCATION}
+)
 
 set(PIP_EXTRA_OPTIONS "")
 if(${PYTHON_BINDING_USER_INSTALL})
