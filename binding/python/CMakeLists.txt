@@ -38,9 +38,15 @@ add_custom_target(eigen-qld-python-bindings ALL
 
 add_dependencies(eigen-qld-python-bindings eigen-qld)
 
-add_test(NAME PythonBindingsTest
-  COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:eigen-qld>" nosetests ${SETUP_LOCATION}
-)
+if (WIN32)
+  add_test(NAME PythonBindingsTest CONFIGURATIONS Release RelWithDebInfo MinSizeRel
+    COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:eigen-qld>" nosetests ${SETUP_LOCATION}
+  )
+else()
+  add_test(NAME PythonBindingsTest
+    COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:eigen-qld>" nosetests ${SETUP_LOCATION}
+  )
+endif()
 
 set(PIP_EXTRA_OPTIONS "")
 if(${PYTHON_BINDING_USER_INSTALL})
