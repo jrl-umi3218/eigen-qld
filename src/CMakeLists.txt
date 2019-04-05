@@ -21,7 +21,14 @@ elseif(NOT ${USE_FORTRAN_SUBDIRECTORY})
 endif()
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
+target_include_directories(eigen-qld PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)
 set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
+set_target_properties(eigen-qld PROPERTIES COMPILE_FLAGS "-DEIGEN_QLD_EXPORT")
+if(TARGET Eigen3::Eigen)
+  target_link_libraries(eigen-qld PUBLIC Eigen3::Eigen)
+else()
+  target_include_directories(eigen-qld SYSTEM PUBLIC "${EIGEN3_INCLUDE_DIR}")
+endif()
 
 if(${USE_FORTRAN_SUBDIRECTORY})
   include(CMakeAddFortranSubdirectory)
@@ -32,15 +39,18 @@ if(${USE_FORTRAN_SUBDIRECTORY})
     LIBRARIES qld_fortran # target libraries created
     LINK_LIBRARIES  # link interface libraries
     NO_EXTERNAL_INSTALL)
-  target_link_libraries(${PROJECT_NAME} qld_fortran)
+  set(qld_fortran_SHARED_LIBRARY ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran${CMAKE_SHARED_LIBRARY_SUFFIX})
+  set(qld_fortran_STATIC_LIBRARY ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran${CMAKE_STATIC_LIBRARY_SUFFIX})
+  # Required here because qld_fortran is external to this project and install does not run
   if(WIN32)
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran.dll DESTINATION ${CMAKE_INSTALL_BINDIR})
-	  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran.lib DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    install(FILES ${qld_fortran_SHARED_LIBRARY} DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(FILES ${qld_fortran_STATIC_LIBRARY} DESTINATION ${CMAKE_INSTALL_LIBDIR})
   endif()
+  target_link_libraries(${PROJECT_NAME} PUBLIC qld_fortran)
 endif()
 
 if(${USE_F2C})
-  target_link_libraries(${PROJECT_NAME} libf2c.a)
+  target_link_libraries(${PROJECT_NAME} PUBLIC libf2c.a)
 endif()
 
 install(
@@ -49,7 +59,6 @@ install(
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-    INCLUDES DESTINATION "${INCLUDE_INSTALL_DIR}"
 )
 install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION})
 
