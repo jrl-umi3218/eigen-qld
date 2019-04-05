@@ -1,3 +1,9 @@
+/*
+ * Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+ */
+
+#pragma once
+
 #include <Eigen/Core>
 
 namespace Eigen
