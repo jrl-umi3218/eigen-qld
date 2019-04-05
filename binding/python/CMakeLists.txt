@@ -2,16 +2,16 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-SET(SETUP_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>/")
-IF(DEFINED CMAKE_BUILD_TYPE)
-  FILE(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
-ELSE()
-  FOREACH(CFG ${CMAKE_CONFIGURATION_TYPES})
-    FILE(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${CFG}")
-  ENDFOREACH()
-ENDIF()
-CONFIGURE_FILE("${CMAKE_CURRENT_SOURCE_DIR}/setup.in.py" "${CMAKE_CURRENT_BINARY_DIR}/setup.in.py")
-FILE(GENERATE
+set(SETUP_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/$<CONFIGURATION>/")
+if(DEFINED CMAKE_BUILD_TYPE)
+  file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_BUILD_TYPE}")
+else()
+  foreach(CFG ${CMAKE_CONFIGURATION_TYPES})
+    file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${CFG}")
+  endforeach()
+endif()
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/setup.in.py" "${CMAKE_CURRENT_BINARY_DIR}/setup.in.py")
+file(GENERATE
       OUTPUT "${SETUP_LOCATION}/setup.py"
       INPUT "${CMAKE_CURRENT_BINARY_DIR}/setup.in.py")
 
@@ -25,9 +25,16 @@ add_custom_target(eigen-qld-python-bindings ALL
 
 add_dependencies(eigen-qld-python-bindings eigen-qld)
 
-add_test(NAME PythonBindingsTest
-  COMMAND ${CMAKE_COMMAND} -E chdir "$<TARGET_FILE_DIR:eigen-qld>" nosetests ${SETUP_LOCATION}
-)
+if(NOT ${DISABLE_TESTS})
+  if(WIN32)
+    set(PATH_SEP ";")
+  else()
+    set(PATH_SEP ":")
+  endif()
+  add_test(NAME PythonBindingsTest
+    COMMAND ${CMAKE_COMMAND} -E env LD_LIBRARY_PATH=$<TARGET_FILE_DIR:eigen-qld>${PATH_SEP}$ENV{LD_LIBRARY_PATH} nosetests -s ${SETUP_LOCATION}
+  )
+endif()
 
 set(PIP_EXTRA_OPTIONS "")
 if(${PYTHON_BINDING_USER_INSTALL})

@@ -2,11 +2,11 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1.3)
+
+set(CMAKE_CXX_STANDARD 11)
 
 include(cmake/base.cmake)
-include(cmake/boost.cmake)
-include(cmake/eigen.cmake)
 include(cmake/msvc-specific.cmake)
 
 set(PROJECT_NAME eigen-qld)
@@ -27,6 +27,7 @@ endif()
 option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts" ${USE_FORTRAN_SUBDIRECTORY_DEFAULT})
 
 setup_project()
+set(PROJECT_VERSION 1.0.0)
 
 option(PYTHON_BINDING "Generate python binding." ON)
 if(WIN32)
@@ -36,28 +37,9 @@ else()
 endif()
 option(PYTHON_BINDING_USER_INSTALL "Install the Python bindings in user space" ${PYTHON_BINDING_USER_INSTALL_DEFAULT})
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+option(DISABLE_TESTS "Disable unit tests." OFF)
 
-if(UNIX)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
-endif()
-
-#########################
-# External dependencies
-if(PKG_CONFIG_FOUND)
-  search_for_eigen()
-else()
-  find_path(Eigen_INCLUDE_DIR NAMES signature_of_eigen3_matrix_library
-    PATHS
-    ${CMAKE_INSTALL_PREFIX}/include
-    PATH_SUFFIXES eigen3 eigen
-  )
-  include_directories(SYSTEM ${Eigen_INCLUDE_DIR})
-endif()
-
-#########################
-
-add_definitions("-DEIGEN_QLD_EXPORT")
+add_project_dependency(Eigen3 REQUIRED)
 
 # For MSVC, set local environment variable to enable finding the built dll
 # of the main library when launching ctest with RUN_TESTS
@@ -70,14 +52,14 @@ if(MSVC)
 endif(MSVC)
 
 add_subdirectory(src)
-add_subdirectory(tests)
+
+if(NOT ${DISABLE_TESTS})
+  add_subdirectory(tests)
+endif()
 
 if(${PYTHON_BINDING})
   add_subdirectory(binding/python)
 endif()
 
-# Add dependency towards the library in the pkg-config file.
-pkg_config_append_libs(${PROJECT_NAME})
-
 setup_project_finalize()
-SETUP_PROJECT_PACKAGE_FINALIZE()
+setup_project_package_finalize()
