@@ -4,6 +4,8 @@
 #
 
 from conans import python_requires
+import conans.tools as tools
+from conans.tools import SystemPackageTool, Version
 import os
 
 base = python_requires("RBDyn/1.1.0@gergondet/stable")
