@@ -10,10 +10,3 @@ set(QLD_FORT
 
 add_library(qld_fortran ${QLD_FORT})
 set_target_properties(qld_fortran PROPERTIES IMPORT_SUFFIX ".lib")
-install(
-  TARGETS qld_fortran
-  EXPORT eigen-qldTargets
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
