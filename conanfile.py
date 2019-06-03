@@ -28,3 +28,29 @@ class EigenQLDConan(base.RBDynConan):
     requires = (
         "Eigen3ToPython/1.0.0@gergondet/stable"
     )
+
+    # build_requirements and system_requirements taken from https://github.com/conan-community/conan-lapack to fetch a Fortran compiler
+    def build_requirements(self):
+        if self.settings.os == "Windows":
+            self.build_requires("mingw_installer/1.0@conan/stable")
+
+    def system_requirements(self):
+        installer = SystemPackageTool()
+        if tools.os_info.is_linux:
+            if tools.os_info.with_pacman or \
+                tools.os_info.with_yum:
+                installer.install("gcc-fortran")
+            else:
+                installer.install("gfortran")
+                versionfloat = Version(self.settings.compiler.version.value)
+                if self.settings.compiler == "gcc":
+                    if versionfloat < "5.0":
+                        installer.install("libgfortran-{}-dev".format(versionfloat))
+                    else:
+                        installer.install("libgfortran-{}-dev".format(int(versionfloat)))
+        if tools.os_info.is_macos and Version(self.settings.compiler.version.value) > "7.3":
+            try:
+                installer.install("gcc", update=True, force=True)
+            except Exception:
+                self.output.warn("brew install gcc failed. Tying to fix it with 'brew link'")
+                self.run("brew link --overwrite gcc")
