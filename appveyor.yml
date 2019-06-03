@@ -3,39 +3,44 @@
 #
 
 version: 1.0.{build}
-os: Visual Studio 2015
+os: Visual Studio 2017
 clone_folder: C:/devel-src/eigen-qld
+configuration:
+  - RelWithDebInfo
+  - Debug
 environment:
   CI_OS_NAME: win32
   CI_TOOL: appveyor
-  CHOCO_DEPENDENCIES: "doxygen.portable"
-  GIT_DEPENDENCIES: ""
+  CHOCO_DEPENDENCIES: "doxygen.install"
+  GIT_DEPENDENCIES: "jrl-umi3218/Eigen3ToPython"
 # Should be the same as clone_folder
   PROJECT_SOURCE_DIR: C:/devel-src/eigen-qld
 # Do not tinker with the variables below unless you know what you are doing
   SOURCE_FOLDER: C:\devel-src
   CMAKE_INSTALL_PREFIX: C:/devel
-  PATH: C:/devel/bin;C:\Libraries\boost_1_59_0\lib64-msvc-14.0;C:\msys64\mingw64\bin;%PATH%
+  PATH: C:\Python36-x64;C:\Python36-x64\Scripts;C:/devel/bin;C:\Libraries\boost_1_67_0\lib64-msvc-14.1;%PATH%
   PKG_CONFIG_PATH: C:/devel/lib/pkgconfig
-  BOOST_ROOT: C:\Libraries\boost_1_59_0
-  BOOST_LIBRARYDIR: C:\Libraries\boost_1_59_0\lib64-msvc-14.0
+  BOOST_ROOT: C:\Libraries\boost_1_67_0
+  BOOST_LIBRARYDIR: C:\Libraries\boost_1_67_0\lib64-msvc-14.1
   MINGW_GFORTRAN: C:\msys64\mingw64\bin\gfortran.exe
 build_script:
 - ps: >-
+    git submodule -q update --init
+
+    pip install cython numpy coverage nose
+
     . ./.jrl-ci/functions.ps1
 
     setup_build
 
-    ./.jrl-ci/dependencies/eigen-3.2.ps1
+    ./.jrl-ci/dependencies/eigen-3.3.ps1
 
     install_dependencies
 
     build_project
 test_script:
-- cmd: >-
-    cd %PROJECT_SOURCE_DIR%/build
-
-    ctest
+- ps: >-
+    test_project
 # This gives access to a remote desktop session after the build finished, useful for debugging
 # on_finish:
 # - ps: >-
