@@ -7,6 +7,7 @@ cmake_minimum_required(VERSION 3.1.3)
 set(CMAKE_CXX_STANDARD 11)
 
 include(cmake/base.cmake)
+include(cmake/cython/cython.cmake)
 include(cmake/msvc-specific.cmake)
 
 set(PROJECT_NAME eigen-qld)
@@ -28,14 +29,6 @@ option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran p
 
 setup_project()
 set(PROJECT_VERSION 1.0.0)
-
-option(PYTHON_BINDING "Generate python binding." ON)
-if(WIN32)
-  set(PYTHON_BINDING_USER_INSTALL_DEFAULT ON)
-else()
-  set(PYTHON_BINDING_USER_INSTALL_DEFAULT OFF)
-endif()
-option(PYTHON_BINDING_USER_INSTALL "Install the Python bindings in user space" ${PYTHON_BINDING_USER_INSTALL_DEFAULT})
 
 option(DISABLE_TESTS "Disable unit tests." OFF)
 
