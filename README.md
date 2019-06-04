@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
 [![Build Status](https://travis-ci.org/jrl-umi3218/eigen-qld.svg?branch=master)](https://travis-ci.org/jrl-umi3218/eigen-qld)
-[![AppVeyor status](https://ci.appveyor.com/api/projects/status/wlds1vauvfvmfspj/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/eigen-qld/branch/master)
+[![AppVeyor status](https://ci.appveyor.com/api/projects/status/sno8wo9jh7bpyljw/branch/master?svg=true)](https://ci.appveyor.com/project/gergondet/eigen-qld/branch/master)
 [ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/eigen-qld%3Agergondet/images/download.svg) ](https://bintray.com/gergondet/multi-contact/eigen-qld%3Agergondet/_latestVersion)
 
 eigen-qld provides an interface to use the [QLD QP solver](https://help.scilab.org/doc/5.5.2/en_US/qld.html) with the [Eigen3](https://eigen.tuxfamily.org) library.
