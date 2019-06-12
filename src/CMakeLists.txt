@@ -45,6 +45,13 @@ if(${USE_FORTRAN_SUBDIRECTORY})
   if(WIN32)
     install(FILES ${qld_fortran_SHARED_LIBRARY} DESTINATION ${CMAKE_INSTALL_BINDIR})
     install(FILES ${qld_fortran_STATIC_LIBRARY} DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    set(PACKAGE_EXTRA_MACROS "
+add_library(qld_fortran STATIC IMPORTED)
+set_target_properties(qld_fortran PROPERTIES
+  IMPORTED_LOCATION \"\${PACKAGE_PREFIX_DIR}/lib/libqld_fortran${CMAKE_STATIC_LIBRARY_SUFFIX}\"
+)
+"
+        PARENT_SCOPE)
   endif()
   target_link_libraries(${PROJECT_NAME} PUBLIC qld_fortran)
 endif()
