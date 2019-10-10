@@ -6,13 +6,15 @@ cmake_minimum_required(VERSION 3.1.3)
 
 set(CMAKE_CXX_STANDARD 11)
 
-include(cmake/base.cmake)
-include(cmake/cython/cython.cmake)
-include(cmake/msvc-specific.cmake)
-
 set(PROJECT_NAME eigen-qld)
 set(PROJECT_DESCRIPTION "QLD QP solver through Eigen3 library.")
 set(PROJECT_URL "https://github.com/jrl-umi3218/eigen-qld")
+set(PROJECT_VERSION 1.0.0)
+set(PROJECT_USE_CMAKE_EXPORT TRUE)
+
+include(cmake/base.cmake)
+include(cmake/cython/cython.cmake)
+include(cmake/msvc-specific.cmake)
 
 # Disable -Werror on Unix for now.
 set(CXX_DISABLE_WERROR True)
@@ -27,10 +29,7 @@ else()
 endif()
 option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts" ${USE_FORTRAN_SUBDIRECTORY_DEFAULT})
 
-setup_project()
-set(PROJECT_VERSION 1.0.0)
-
-option(DISABLE_TESTS "Disable unit tests." OFF)
+project(eigen-qld Fortran C CXX)
 
 add_project_dependency(Eigen3 REQUIRED)
 
@@ -46,13 +45,10 @@ endif(MSVC)
 
 add_subdirectory(src)
 
-if(NOT ${DISABLE_TESTS})
+if(${BUILD_TESTING})
   add_subdirectory(tests)
 endif()
 
 if(${PYTHON_BINDING})
   add_subdirectory(binding/python)
 endif()
-
-setup_project_finalize()
-setup_project_package_finalize()
