@@ -29,7 +29,7 @@ else()
 endif()
 option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts" ${USE_FORTRAN_SUBDIRECTORY_DEFAULT})
 
-project(eigen-qld Fortran C CXX)
+project(eigen-qld C CXX)
 
 add_project_dependency(Eigen3 REQUIRED)
 
