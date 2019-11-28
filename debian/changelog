@@ -1,0 +1,11 @@
+eigen-qld (1.1.0-1ubuntu3) unstable; urgency=medium
+
+  * Enable Python bindings
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Mon, 03 Jun 2019 16:07:17 +0900
+
+eigen-qld (1.0.0-1trusty1) trusty; urgency=medium
+
+  * Initial release.
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Fri, 11 Mar 2016 10:40:17 +0900
