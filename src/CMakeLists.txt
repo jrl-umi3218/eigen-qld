@@ -22,7 +22,7 @@ endif()
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 target_include_directories(eigen-qld PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}> $<INSTALL_INTERFACE:include>)
-set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
+set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR} VERSION ${PROJECT_VERSION})
 set_target_properties(eigen-qld PROPERTIES COMPILE_FLAGS "-DEIGEN_QLD_EXPORT")
 if(TARGET Eigen3::Eigen)
   target_link_libraries(eigen-qld PUBLIC Eigen3::Eigen)
