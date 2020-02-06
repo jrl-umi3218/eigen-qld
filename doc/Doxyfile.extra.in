@@ -1,4 +1,3 @@
-INPUT                  = @CMAKE_SOURCE_DIR@/include
-IMAGE_PATH             = @CMAKE_SOURCE_DIR@/doc/pictures
+INPUT                  = @CMAKE_SOURCE_DIR@/src/eigen-qld
 FILE_PATTERNS          = *.h *.idl
 
