@@ -1,3 +1,4 @@
 INPUT                  = @CMAKE_SOURCE_DIR@/src/eigen-qld
+USE_MDFILE_AS_MAINPAGE = @CMAKE_SOURCE_DIR@/README.md
 FILE_PATTERNS          = *.h *.idl
 

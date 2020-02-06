@@ -12,7 +12,7 @@ namespace Eigen
 
 QLD::QLD() : A_(), B_(), fdOut_(0), verbose_(false), fail_(0), U_(), WAR_(), IWAR_() {}
 
-QLD::QLD(int nrvar, int nreq, int nrineq, bool verbose, int ldq)
+QLD::QLD(int nrvar, int nreq, int nrineq, int ldq, bool verbose)
 : A_(), B_(), fdOut_(0), verbose_(verbose ? 1 : 0), fail_(0), U_(), WAR_(), IWAR_()
 {
   problem(nrvar, nreq, nrineq, ldq);
@@ -47,7 +47,7 @@ void QLD::problem(int nrvar, int nreq, int nrineq, int ldq)
 {
   int nrconstr = nreq + nrineq;
 
-  if(ldq < 0) ldq = nrvar;
+  if(ldq < nrvar) ldq = nrvar;
 
   assert(ldq >= nrvar);
 

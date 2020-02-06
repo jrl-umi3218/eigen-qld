@@ -53,7 +53,7 @@ public:
   /** Create a solver and allocate the memory necessary to solve a problem with the given dimensions.
    * See also QLD::problem
    */
-  EIGEN_QLD_API QLD(int nrvar, int nreq, int nrineq, bool verbose = false, int ldq = -1);
+  EIGEN_QLD_API QLD(int nrvar, int nreq, int nrineq, int ldq = -1, bool verbose = false);
 
   /** Specify a file number for output (Fortran unit specification).*/
   EIGEN_QLD_API void fdOut(int fd);
@@ -225,12 +225,16 @@ inline bool QLD::solve(const MatrixBase<MatObj> & Q,
   int M = nreq + nrineq;
   int N = nrvar;
 
-  int MMAX = int(A_.stride());
-  int NMAX = int(Q.stride());
+  int MMAX = std::max(int(A_.stride()), 1);
+  int NMAX = std::max(int(Q.stride()), 1);
 
   int NMN = M + 2 * N;
   int LWAR = int(WAR_.rows());
   int LIWAR = int(IWAR_.rows());
+
+  assert(LWAR >= (3. * NMAX * NMAX) / 2. + 10. * NMAX + MMAX + M + 1.
+         && "Please call QLD::problem with the correct dimensions.");
+  assert(LIWAR >= N && "Please call QLD::problem with the correct dimensions.");
 
   A_.block(0, 0, nreq, nrvar) = -Aeq;
   A_.block(nreq, 0, nrineq, nrvar) = -Aineq;
