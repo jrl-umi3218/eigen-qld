@@ -45,7 +45,7 @@ class QLD
 {
 public:
   EIGEN_QLD_API QLD();
-  EIGEN_QLD_API QLD(int nrvar, int nreq, int nrineq, bool verbose = false);
+  EIGEN_QLD_API QLD(int nrvar, int nreq, int nrineq, bool verbose = false, int ldq=-1, int lda=-1);
 
   EIGEN_QLD_API void fdOut(int fd);
   EIGEN_QLD_API int fdOut() const;
@@ -55,7 +55,7 @@ public:
 
   EIGEN_QLD_API int fail() const;
 
-  EIGEN_QLD_API void problem(int nrvar, int nreq, int nrineq);
+  EIGEN_QLD_API void problem(int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1);
 
   EIGEN_QLD_API const VectorXd & result() const;
 
@@ -157,9 +157,9 @@ inline bool QLD::solve(const MatrixBase<MatObj> & Q,
   int M = nreq + nrineq;
   int N = nrvar;
 
-  int MMAX = int(A_.rows());
+  int MMAX = int(A_.stride());
   // beware, don't work if base Q is not square
-  int NMAX = int(Q.rows());
+  int NMAX = int(Q.stride());
 
   int NMN = M + 2 * N;
   int LWAR = int(WAR_.rows());
