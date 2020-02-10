@@ -9,9 +9,9 @@ cdef extern from "<eigen-qld/QLD.h>" namespace "Eigen":
   cdef cppclass QLD:
     QLD()
     QLD(int, int, int)
-    QLD(int, int, int, bool)
+    QLD(int, int, int, int, bool)
 
-    void problem(int, int, int)
+    void problem(int, int, int, int)
 
     const c_eigen.VectorXd& result()
 

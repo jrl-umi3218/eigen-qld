@@ -30,10 +30,12 @@ struct QP1
     Q.resize(nrvar, nrvar);
     Aeq.resize(nreq, nrvar);
     Aineq.resize(nrineq, nrvar);
+    A.resize(nreq + nrineq, nrvar);
 
     C.resize(nrvar);
     Beq.resize(nreq);
     Bineq.resize(nrineq);
+    B.resize(nreq + nrineq);
     XL.resize(nrvar);
     XU.resize(nrvar);
     X.resize(nrvar);
@@ -43,6 +45,12 @@ struct QP1
 
     Aineq << 0., 1., 0., 1., 2., -1., -1., 0., 2., 1., 1., 0.;
     Bineq << -1., 2.5;
+
+    A.topRows(nreq) = Aeq;
+    A.bottomRows(nrineq) = -Aineq;
+
+    B.head(nreq) = -Beq;
+    B.tail(nrineq) = Bineq;
 
     // with  x between ci and cs:
     XL << -1000., -10000., 0., -1000., -1000., -1000.;
@@ -56,8 +64,8 @@ struct QP1
   }
 
   int nrvar, nreq, nrineq;
-  Eigen::MatrixXd Q, Aeq, Aineq;
-  Eigen::VectorXd C, Beq, Bineq, XL, XU, X;
+  Eigen::MatrixXd Q, Aeq, Aineq, A;
+  Eigen::VectorXd C, Beq, Bineq, B, XL, XU, X;
 };
 
 void ineqWithXBounds(Eigen::MatrixXd & Aineq,
@@ -112,7 +120,11 @@ BOOST_AUTO_TEST_CASE(QLD)
   Eigen::QLD qld(qp1.nrvar, qp1.nreq, qp1.nrineq);
 
   qld.solve(qp1.Q, qp1.C, qp1.Aeq, qp1.Beq, qp1.Aineq, qp1.Bineq, qp1.XL, qp1.XU);
+  BOOST_CHECK_SMALL((qld.result() - qp1.X).norm(), 1e-6);
 
+  Eigen::QLDDirect qldd(qp1.nrvar, qp1.nreq, qp1.nrineq);
+
+  qldd.solve(qp1.Q, qp1.C, qp1.A, qp1.B, qp1.XL, qp1.XU, 3);
   BOOST_CHECK_SMALL((qld.result() - qp1.X).norm(), 1e-6);
 }
 

@@ -18,11 +18,11 @@ cdef class QLD(object):
     elif len(args) == 3:
       self.impl = c_eigen_qld.QLD(args[0], args[1], args[2])
     elif len(args) == 4:
-      self.impl = c_eigen_qld.QLD(args[0], args[1], args[2], args[3])
+      self.impl = c_eigen_qld.QLD(args[0], args[1], args[2], -1, args[3])
     else:
       raise TypeError("Wrong arguments passed to QLD ctor")
   def problem(self, nrvar, nreq, nrineq):
-    self.impl.problem(nrvar, nreq, nrineq)
+    self.impl.problem(nrvar, nreq, nrineq, -1)
   def result(self):
     return eigen.VectorXdFromC(self.impl.result())
   def multipliers(self):
