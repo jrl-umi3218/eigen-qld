@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['qld',['QLD',['../a00566.html',1,'Eigen']]]
+  ['qld',['QLD',['../a00569.html',1,'Eigen']]],
+  ['qlddirect',['QLDDirect',['../a00573.html',1,'Eigen']]]
 ];

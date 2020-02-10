@@ -30,106 +30,155 @@
     <name>QLD.h</name>
     <path>/home/runner/work/eigen-qld/eigen-qld/src/eigen-qld/</path>
     <filename>a00014</filename>
-    <includes id="a00011" name="eigen_qld_api.h" local="yes" imported="no">eigen_qld_api.h</includes>
+    <includes id="a00017" name="QLDDirect.h" local="yes" imported="no">QLDDirect.h</includes>
     <class kind="class">Eigen::QLD</class>
+    <namespace>Eigen</namespace>
+  </compound>
+  <compound kind="file">
+    <name>QLDDirect.h</name>
+    <path>/home/runner/work/eigen-qld/eigen-qld/src/eigen-qld/</path>
+    <filename>a00017</filename>
+    <includes id="a00011" name="eigen_qld_api.h" local="yes" imported="no">eigen_qld_api.h</includes>
+    <class kind="class">Eigen::QLDDirect</class>
     <namespace>Eigen</namespace>
     <member kind="function">
       <type>int</type>
       <name>ql_</name>
-      <anchorfile>a00018.html</anchorfile>
+      <anchorfile>a00021.html</anchorfile>
       <anchor>a17aed4978be1d7c0edff37d31dae2a54</anchor>
       <arglist>(const int *m, const int *me, const int *mmax, const int *n, const int *nmax, const int *mnn, const double *c, const double *d, const double *a, const double *b, const double *xl, const double *xu, double *x, double *u, const double *eps, const int *mode, const int *iout, int *ifail, const int *iprint, double *war, int *lwar, int *iwar, int *liwar)</arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>Eigen::QLD</name>
-    <filename>a00566.html</filename>
+    <filename>a00569.html</filename>
+    <base>Eigen::QLDDirect</base>
     <member kind="function">
       <type>EIGEN_QLD_API</type>
       <name>QLD</name>
-      <anchorfile>a00566.html</anchorfile>
+      <anchorfile>a00569.html</anchorfile>
       <anchor>abe2be2e6e8685bbac77c5d9b5fc6a789</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>EIGEN_QLD_API</type>
       <name>QLD</name>
-      <anchorfile>a00566.html</anchorfile>
+      <anchorfile>a00569.html</anchorfile>
       <anchor>ac5501cac61e86daa7fee04be516619c9</anchor>
       <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1, bool verbose=false)</arglist>
     </member>
     <member kind="function">
       <type>EIGEN_QLD_API void</type>
-      <name>fdOut</name>
-      <anchorfile>a00566.html</anchorfile>
-      <anchor>a0c171dbc4e7e90713ee5da9425379c84</anchor>
-      <arglist>(int fd)</arglist>
-    </member>
-    <member kind="function">
-      <type>EIGEN_QLD_API int</type>
-      <name>fdOut</name>
-      <anchorfile>a00566.html</anchorfile>
-      <anchor>afd271f922231d82459dd14f5a0d14c82</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>EIGEN_QLD_API void</type>
-      <name>verbose</name>
-      <anchorfile>a00566.html</anchorfile>
-      <anchor>a31ab5be0405918b2b523057d3f36cd22</anchor>
-      <arglist>(bool v)</arglist>
-    </member>
-    <member kind="function">
-      <type>EIGEN_QLD_API bool</type>
-      <name>verbose</name>
-      <anchorfile>a00566.html</anchorfile>
-      <anchor>a299573e621688e7a2412787608b11cfb</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>EIGEN_QLD_API int</type>
-      <name>fail</name>
-      <anchorfile>a00566.html</anchorfile>
-      <anchor>ab31514387bc77d91434c07e9188485c3</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>EIGEN_QLD_API void</type>
       <name>problem</name>
-      <anchorfile>a00566.html</anchorfile>
+      <anchorfile>a00569.html</anchorfile>
       <anchor>ae0579b5ddd8341d14be877997acf3752</anchor>
       <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1)</arglist>
     </member>
     <member kind="function">
       <type>EIGEN_QLD_API const VectorXd &amp;</type>
-      <name>result</name>
-      <anchorfile>a00566.html</anchorfile>
-      <anchor>ac69f06fb910cd8ff738f90db2e37eb9d</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>EIGEN_QLD_API const VectorXd &amp;</type>
       <name>multipliers</name>
-      <anchorfile>a00566.html</anchorfile>
+      <anchorfile>a00569.html</anchorfile>
       <anchor>a9bd9163d8f684fafd15699836045397f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>solve</name>
-      <anchorfile>a00566.html</anchorfile>
-      <anchor>a954a1ade82a93184aff522d43ed74e03</anchor>
-      <arglist>(const MatrixBase&lt; MatObj &gt; &amp;Q, const MatrixBase&lt; VecObj &gt; &amp;C, const MatrixBase&lt; MatEq &gt; &amp;Aeq, const MatrixBase&lt; VecEq &gt; &amp;Beq, const MatrixBase&lt; MatIneq &gt; &amp;Aineq, const MatrixBase&lt; VecIneq &gt; &amp;Bineq, const MatrixBase&lt; VecVar &gt; &amp;XL, const MatrixBase&lt; VecVar &gt; &amp;XU, bool isDecomp=false, double eps=1e-12)</arglist>
+      <anchorfile>a00569.html</anchorfile>
+      <anchor>ac2325b12a08e8ee3d930eb8c26d66b35</anchor>
+      <arglist>(const MatrixBase&lt; MatObj &gt; &amp;Q, const MatrixBase&lt; VecObj &gt; &amp;c, const MatrixBase&lt; MatEq &gt; &amp;Aeq, const MatrixBase&lt; VecEq &gt; &amp;beq, const MatrixBase&lt; MatIneq &gt; &amp;Aineq, const MatrixBase&lt; VecIneq &gt; &amp;bineq, const MatrixBase&lt; VecVar &gt; &amp;xl, const MatrixBase&lt; VecVar &gt; &amp;xu, bool isDecomp=false, double eps=1e-12)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Eigen::QLDDirect</name>
+    <filename>a00573.html</filename>
+    <member kind="function">
+      <type>EIGEN_QLD_API</type>
+      <name>QLDDirect</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>aa3024e86ed4f27c784488ea036bee87b</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API</type>
+      <name>QLDDirect</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>ade80579a87650531fbd174632f991e71</anchor>
+      <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1, bool verbose=false)</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API void</type>
+      <name>fdOut</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>a86ed5a48766dff3f120f2a5f1367139f</anchor>
+      <arglist>(int fd)</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API int</type>
+      <name>fdOut</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>a72c47d7120cba09b7ff5b7468f3818d3</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API void</type>
+      <name>verbose</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>ab1a8b3b200f6ec92f4d5a584aed64671</anchor>
+      <arglist>(bool v)</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API bool</type>
+      <name>verbose</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>aec5e4407f0783c43915f389aa2d19ea0</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API int</type>
+      <name>fail</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>aee88e98a76d8432604f88f90dc589904</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API void</type>
+      <name>problem</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>a8630de2c7c9103f6543796198300046e</anchor>
+      <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1)</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API const VectorXd &amp;</type>
+      <name>result</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>a4e1b21ddca097cc830ea46757c4dd46e</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>EIGEN_QLD_API const VectorXd &amp;</type>
+      <name>multipliers</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>a6f5a52d37a75adca29ad34a1fca686d1</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>solve</name>
+      <anchorfile>a00573.html</anchorfile>
+      <anchor>ac7a85f80fdc949c18c532da62ddc8c8f</anchor>
+      <arglist>(const MatrixBase&lt; MatObj &gt; &amp;Q, const MatrixBase&lt; VecObj &gt; &amp;c, const MatrixBase&lt; MatConstr &gt; &amp;A, const MatrixBase&lt; VecConstr &gt; &amp;b, const MatrixBase&lt; VecVar &gt; &amp;xl, const MatrixBase&lt; VecVar &gt; &amp;xu, int nreq, bool isDecomp=false, double eps=1e-12)</arglist>
     </member>
   </compound>
   <compound kind="namespace">
     <name>Eigen</name>
-    <filename>a00018.html</filename>
+    <filename>a00021.html</filename>
     <class kind="class">Eigen::QLD</class>
+    <class kind="class">Eigen::QLDDirect</class>
     <member kind="function">
       <type>int</type>
       <name>ql_</name>
-      <anchorfile>a00018.html</anchorfile>
+      <anchorfile>a00021.html</anchorfile>
       <anchor>a17aed4978be1d7c0edff37d31dae2a54</anchor>
       <arglist>(const int *m, const int *me, const int *mmax, const int *n, const int *nmax, const int *mnn, const double *c, const double *d, const double *a, const double *b, const double *xl, const double *xu, double *x, double *u, const double *eps, const int *mode, const int *iout, int *ifail, const int *iprint, double *war, int *lwar, int *iwar, int *liwar)</arglist>
     </member>

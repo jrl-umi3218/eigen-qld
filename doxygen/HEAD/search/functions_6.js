@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['verbose',['verbose',['../a00566.html#a31ab5be0405918b2b523057d3f36cd22',1,'Eigen::QLD::verbose(bool v)'],['../a00566.html#a299573e621688e7a2412787608b11cfb',1,'Eigen::QLD::verbose() const']]]
+  ['verbose',['verbose',['../a00573.html#ab1a8b3b200f6ec92f4d5a584aed64671',1,'Eigen::QLDDirect::verbose(bool v)'],['../a00573.html#aec5e4407f0783c43915f389aa2d19ea0',1,'Eigen::QLDDirect::verbose() const']]]
 ];
