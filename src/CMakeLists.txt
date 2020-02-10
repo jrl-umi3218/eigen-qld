@@ -8,8 +8,8 @@ elseif(${USE_F2C})
   enable_language(C)
 endif()
 
-set(SOURCES QLD.cpp)
-set(HEADERS eigen-qld/eigen_qld_api.h eigen-qld/QLD.h)
+set(SOURCES QLD.cpp QLDDirect.cpp)
+set(HEADERS eigen-qld/eigen_qld_api.h eigen-qld/QLD.h eigen-qld/QLDDirect.h)
 
 set(QLD_FORT QLD/f/QLD.f)
 set(QLD_C QLD/c/QLD.c)

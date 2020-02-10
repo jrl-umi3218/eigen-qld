@@ -122,7 +122,9 @@ BOOST_AUTO_TEST_CASE(QLD)
   qld.solve(qp1.Q, qp1.C, qp1.Aeq, qp1.Beq, qp1.Aineq, qp1.Bineq, qp1.XL, qp1.XU);
   BOOST_CHECK_SMALL((qld.result() - qp1.X).norm(), 1e-6);
 
-  qld.solveNoOverhead(qp1.Q, qp1.C, qp1.A, qp1.B, qp1.XL, qp1.XU, 3);
+  Eigen::QLDDirect qldd(qp1.nrvar, qp1.nreq, qp1.nrineq);
+
+  qldd.solve(qp1.Q, qp1.C, qp1.A, qp1.B, qp1.XL, qp1.XU, 3);
   BOOST_CHECK_SMALL((qld.result() - qp1.X).norm(), 1e-6);
 }
 
