@@ -123,12 +123,12 @@ inline bool QLD::solve(const MatrixBase<MatObj> & Q,
   int nrineq = int(bineq.rows());
 
   A_.topRows(nreq) = -Aeq;
-  A_.bottomRows(nrineq) = -Aineq;
+  A_.middleRows(nreq, nrineq) = -Aineq;
 
   B_.head(nreq) = beq;
-  B_.tail(nrineq) = bineq;
+  B_.segment(nreq, nrineq) = bineq;
 
-  return QLDDirect::solve(Q, c, A_, B_, xl, xu, nreq, isDecomp, eps);
+  return QLDDirect::solve(Q, c, A_.topRows(nreq + nrineq), B_.head(nreq + nrineq), xl, xu, nreq, isDecomp, eps);
 }
 
 } // namespace Eigen
