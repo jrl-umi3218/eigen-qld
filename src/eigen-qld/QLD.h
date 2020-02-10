@@ -53,7 +53,7 @@ public:
   /** Create a solver and allocate the memory necessary to solve a problem with the given dimensions.
    * See also QLD::problem
    */
-  EIGEN_QLD_API QLD(int nrvar, int nreq, int nrineq, int ldq = -1, bool verbose = false);
+  EIGEN_QLD_API QLD(int nrvar, int nreq, int nrineq, int ldq = -1, int lda = -1, bool verbose = false);
 
   /** Specify a file number for output (Fortran unit specification).*/
   EIGEN_QLD_API void fdOut(int fd);
@@ -72,8 +72,12 @@ public:
    * \param nrvar Size of the variable vector \f$x\f$.
    * \param nreq Number of equality constraints, i.e. the row size of \f$A_{eq}\f$.
    * \param nrineq Number of inequality constraints, i.e. the row size of \f$A_{ineq}\f$.
-   * \param ldq Leading dimension of the matrix \f$Q\f$ (see below). If negative,
-   * \p nrvar will be used instead (which is the default case).
+   * \param ldq Leading dimension of the matrix \f$Q\f$ (see below). If smaller than
+   * \p nrvar, \p nrvar will be used instead (which is the default case).
+   * \param lda Leading dimension of the matrix
+   * \f$A = \begin{bmatrix} A_{eq} \\ A_{ineq} \end{bmatrix} \f$. If smaller
+   * than \p nreq + \p nrineq, it will be set to this value (which is the default case).
+   * Only usefull if you intend to use QLD::solverNoOverhead).
    *
    * \note For a column-major matrix (which is the default case in Eigen and what QLD
    * is expecting), the matrix values are stored in a simple, 1-d array, one column
@@ -92,9 +96,12 @@ public:
    * example we consider a matrix \a B that is the block of another one \a M, the
    * leading dimension of \a B will be the row dimension of \a M.
    */
-  EIGEN_QLD_API void problem(int nrvar, int nreq, int nrineq, int ldq = -1);
+  EIGEN_QLD_API void problem(int nrvar, int nreq, int nrineq, int ldq = -1, int lda = -1);
 
-  /** Return the result from the latest call to QLD::solve. */
+  /** Same as QLD::problem, but avoid uncessary matrix resizes. */
+  EIGEN_QLD_API void problemNoOverhead(int nrvar, int nreq, int nrineq, int ldq = -1, int lda = -1);
+
+  /** Return the result from the latest call to QLD::solve or QLD::solveNoOverhead. */
   EIGEN_QLD_API const VectorXd & result() const;
 
   /** Return the lagrange multipliers associated with results, with the multipliers
@@ -105,6 +112,7 @@ public:
    * for which the constraints have the form \f$ A_{eq} + b_{eq} = 0\f$ and
    * \f$ A_{ineq} + b_{ineq} >= 0\f$.\n
    * For now, QLD::solve is changing automatically the constraints, but not the multipliers.
+   * After a call to QLD::solveNoOverhead, the multipliers have the same meaning as for ql.
    */
   EIGEN_QLD_API const VectorXd & multipliers() const;
 
@@ -116,7 +124,7 @@ public:
    *   & \ x_l \leq x \leq x_u
    * \f}
    *
-   * For a positived definite matrix \f$Q\f$, we have the Cholesky decomposition \f$Q = R^T R\f$
+   * For a positive definite matrix \f$Q\f$, we have the Cholesky decomposition \f$Q = R^T R\f$
    * with \f$R\f$ upper triangular. If \p isDecomp is \a true, \f$R\f$ should be given instead of \f$Q\f$.
    * Only the upper triangular part of \f$R\f$ will be used.
    *
@@ -140,15 +148,49 @@ public:
            typename VecIneq,
            typename VecVar>
   bool solve(const MatrixBase<MatObj> & Q,
-             const MatrixBase<VecObj> & C,
+             const MatrixBase<VecObj> & c,
              const MatrixBase<MatEq> & Aeq,
-             const MatrixBase<VecEq> & Beq,
+             const MatrixBase<VecEq> & beq,
              const MatrixBase<MatIneq> & Aineq,
-             const MatrixBase<VecIneq> & Bineq,
-             const MatrixBase<VecVar> & XL,
-             const MatrixBase<VecVar> & XU,
+             const MatrixBase<VecIneq> & bineq,
+             const MatrixBase<VecVar> & xl,
+             const MatrixBase<VecVar> & xu,
              bool isDecomp = false,
              double eps = 1e-12);
+
+  /** Solve the problem
+   * \f{align}{
+   *   \underset{{x} \in \mathbb{R}^n}{\text{minimize}} & \ \frac{1}{2}{x^TQx} + {c^Tx} \nonumber \\
+   *   \text{subject to} & \ A_{1:m_e} x + b_{1:m_e} = 0 \\
+   *   & \ A_{m_e+1:\mbox{end}} x + b_{m_e+1:\mbox{end}} \geq 0 \\
+   *   & \ x_l \leq x \leq x_u
+   * \f}
+   *
+   * For a positive definite matrix \f$Q\f$, we have the Cholesky decomposition \f$Q = R^T R\f$
+   * with \f$R\f$ upper triangular. If \p isDecomp is \a true, \f$R\f$ should be given instead of \f$Q\f$.
+   * Only the upper triangular part of \f$R\f$ will be used.
+   *
+   * \param Q The matrix \f$Q\f$, or its Cholesky factor \f$R\f$ if \p isDecomp is \a true.
+   * \f$Q\f$ should be symmetric and positive definite, \f$R\f$ should be upper triangular.
+   * \param c The vector \f$c\f$.
+   * \param A The matrix \f$A = \begin{bmatrix} A_{eq} \\ A_{ineq} \end{bmatrix} \f$.
+   * \param b The vector \f$b = \begin{bmatrix} b_{eq} \\ b_{ineq} \end{bmatrix} \f$.
+   * \param xl The vector \f$x_{l}\f$.
+   * \param xu The vector \f$x_{u}\f$.
+   * \param nreq The number of equality constraints (i.e. the row size of \f$A_{eq}\f$).
+   * \param isDecomp specify if the Cholesky decomposition of \f$Q\f$ is used or not.
+   * \param eps Desired final accuracy.
+   */
+  template<typename MatObj, typename VecObj, typename MatConstr, typename VecConstr, typename VecVar>
+  bool solveNoOverhead(const MatrixBase<MatObj> & Q,
+                       const MatrixBase<VecObj> & c,
+                       const MatrixBase<MatConstr> & A,
+                       const MatrixBase<VecConstr> & b,
+                       const MatrixBase<VecVar> & xl,
+                       const MatrixBase<VecVar> & xu,
+                       int nreq,
+                       bool isDecomp = false,
+                       double eps = 1e-12);
 
 private:
   MatrixXd A_;
@@ -245,6 +287,48 @@ inline bool QLD::solve(const MatrixBase<MatObj> & Q,
   fortran_ql(&M, &nreq, &MMAX, &N, &NMAX, &NMN, Q.derived().data(), c.derived().data(), A_.data(), B_.data(),
              xl.derived().data(), xu.derived().data(), X_.data(), U_.data(), &eps, &mode, &fdOut_, &fail_, &verbose_,
              WAR_.data(), &LWAR, IWAR_.data(), &LIWAR);
+
+  return fail_ == 0;
+}
+
+template<typename MatObj, typename VecObj, typename MatConstr, typename VecConstr, typename VecVar>
+inline bool QLD::solveNoOverhead(const MatrixBase<MatObj> & Q,
+                                 const MatrixBase<VecObj> & c,
+                                 const MatrixBase<MatConstr> & A,
+                                 const MatrixBase<VecConstr> & b,
+                                 const MatrixBase<VecVar> & xl,
+                                 const MatrixBase<VecVar> & xu,
+                                 int nreq,
+                                 bool isDecomp,
+                                 double eps)
+{
+  assert(A.rows() == b.rows()); // check constraint size
+  assert(A.cols() == X_.rows());
+  assert(Q.rows() == Q.cols()); // check Q is square
+  assert(Q.cols() == X_.rows()); // check Q has the good number of variable
+  assert(c.rows() == X_.rows()); // check C size
+  assert(xl.rows() == X_.rows()); // check XL size
+  assert(xu.rows() == X_.rows()); // check XU size
+
+  int mode = isDecomp ? 0 : 1;
+
+  int M = A.rows();
+  int N = int(X_.rows());
+
+  int MMAX = std::max(int(A.stride()), 1);
+  int NMAX = std::max(int(Q.stride()), 1);
+
+  int NMN = M + 2 * N;
+  int LWAR = int(WAR_.rows());
+  int LIWAR = int(IWAR_.rows());
+
+  assert(LWAR >= (3. * NMAX * NMAX) / 2. + 10. * NMAX + MMAX + M + 1.
+         && "Please call QLD::problem with the correct dimensions.");
+  assert(LIWAR >= N && "Please call QLD::problem with the correct dimensions.");
+
+  fortran_ql(&M, &nreq, &MMAX, &N, &NMAX, &NMN, Q.derived().data(), c.derived().data(), A.derived().data(),
+             b.derived().data(), xl.derived().data(), xu.derived().data(), X_.data(), U_.data(), &eps, &mode, &fdOut_,
+             &fail_, &verbose_, WAR_.data(), &LWAR, IWAR_.data(), &LIWAR);
 
   return fail_ == 0;
 }

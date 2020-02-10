@@ -12,10 +12,10 @@ namespace Eigen
 
 QLD::QLD() : A_(), B_(), fdOut_(0), verbose_(false), fail_(0), U_(), WAR_(), IWAR_() {}
 
-QLD::QLD(int nrvar, int nreq, int nrineq, int ldq, bool verbose)
+QLD::QLD(int nrvar, int nreq, int nrineq, int ldq, int lda, bool verbose)
 : A_(), B_(), fdOut_(0), verbose_(verbose ? 1 : 0), fail_(0), U_(), WAR_(), IWAR_()
 {
-  problem(nrvar, nreq, nrineq, ldq);
+  problem(nrvar, nreq, nrineq, ldq, lda);
 }
 
 void QLD::fdOut(int fd)
@@ -43,15 +43,23 @@ int QLD::fail() const
   return fail_;
 }
 
-void QLD::problem(int nrvar, int nreq, int nrineq, int ldq)
+void QLD::problem(int nrvar, int nreq, int nrineq, int ldq, int lda)
+{
+  problemNoOverhead(nrvar, nreq, nrineq, ldq, lda);
+
+  int nrconstr = nreq + nrineq;
+  A_.resize(nrconstr, nrvar);
+  B_.resize(nrconstr);
+}
+
+void QLD::problemNoOverhead(int nrvar, int nreq, int nrineq, int ldq, int lda)
 {
   int nrconstr = nreq + nrineq;
 
   if(ldq < nrvar) ldq = nrvar;
+  if(lda < nrconstr) lda = nrconstr;
 
-  assert(ldq >= nrvar);
-
-  int MMAX = nrconstr == 0 ? 1 : nrconstr;
+  int MMAX = lda == 0 ? 1 : lda;
   int NMAX = ldq == 0 ? 1 : ldq;
 
   A_.resize(nrconstr, nrvar);
