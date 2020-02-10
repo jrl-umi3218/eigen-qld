@@ -1,3 +1,9 @@
+eigen-qld (1.2.0-1ubuntu1) unstable; urgency=medium
+
+  * Upstream version updated
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Mon, 10 Feb 2020 15:23:43 +0800
+
 eigen-qld (1.1.0-1ubuntu3) unstable; urgency=medium
 
   * Enable Python bindings
