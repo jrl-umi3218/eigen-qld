@@ -51,7 +51,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('a00573.html','');});
+$(document).ready(function(){initNavTree('classEigen_1_1QLDDirect.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -71,69 +71,52 @@ $(document).ready(function(){initNavTree('a00573.html','');});
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="a00570.html">List of all members</a>  </div>
+<a href="classEigen_1_1QLDDirect-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Eigen::QLDDirect Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A lightweight wrapper of the ql algorithm by Professor Schittkowski.  
- <a href="a00573.html#details">More...</a></p>
+<p>A lightweight wrapper of the ql algorithm by Professor Schittkowski. It handles the workspace memory to be passed to the solver along with the problem.  
+ <a href="classEigen_1_1QLDDirect.html#details">More...</a></p>
 
-<p><code>#include &lt;eigen-qld/QLDDirect.h&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="QLDDirect_8h_source.html">eigen-qld/QLDDirect.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Eigen::QLDDirect:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="a00573.png" usemap="#Eigen::QLDDirect_map" alt=""/>
-  <map id="Eigen::QLDDirect_map" name="Eigen::QLDDirect_map">
-<area href="a00569.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ..." alt="Eigen::QLD" shape="rect" coords="0,56,110,80"/>
+<div class="center"><img src="classEigen_1_1QLDDirect__inherit__graph.png" border="0" usemap="#Eigen_1_1QLDDirect_inherit__map" alt="Inheritance graph"/></div>
+<map name="Eigen_1_1QLDDirect_inherit__map" id="Eigen_1_1QLDDirect_inherit__map">
 </map>
- </div></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa3024e86ed4f27c784488ea036bee87b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#aa3024e86ed4f27c784488ea036bee87b">QLDDirect</a> ()</td></tr>
-<tr class="memdesc:aa3024e86ed4f27c784488ea036bee87b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a solver without allocating memory.  <a href="#aa3024e86ed4f27c784488ea036bee87b">More...</a><br /></td></tr>
+<tr class="memitem:aa3024e86ed4f27c784488ea036bee87b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#aa3024e86ed4f27c784488ea036bee87b">QLDDirect</a> ()</td></tr>
 <tr class="separator:aa3024e86ed4f27c784488ea036bee87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade80579a87650531fbd174632f991e71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#ade80579a87650531fbd174632f991e71">QLDDirect</a> (int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1, bool <a class="el" href="a00573.html#ab1a8b3b200f6ec92f4d5a584aed64671">verbose</a>=false)</td></tr>
-<tr class="memdesc:ade80579a87650531fbd174632f991e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a solver and allocate the memory necessary to solve a problem with the given dimensions.  <a href="#ade80579a87650531fbd174632f991e71">More...</a><br /></td></tr>
+<tr class="memitem:ade80579a87650531fbd174632f991e71"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#ade80579a87650531fbd174632f991e71">QLDDirect</a> (int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1, bool <a class="el" href="classEigen_1_1QLDDirect.html#ab1a8b3b200f6ec92f4d5a584aed64671">verbose</a>=false)</td></tr>
 <tr class="separator:ade80579a87650531fbd174632f991e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86ed5a48766dff3f120f2a5f1367139f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#a86ed5a48766dff3f120f2a5f1367139f">fdOut</a> (int fd)</td></tr>
-<tr class="memdesc:a86ed5a48766dff3f120f2a5f1367139f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify a file number for output (Fortran unit specification).  <a href="#a86ed5a48766dff3f120f2a5f1367139f">More...</a><br /></td></tr>
+<tr class="memitem:a86ed5a48766dff3f120f2a5f1367139f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#a86ed5a48766dff3f120f2a5f1367139f">fdOut</a> (int fd)</td></tr>
 <tr class="separator:a86ed5a48766dff3f120f2a5f1367139f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72c47d7120cba09b7ff5b7468f3818d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#a72c47d7120cba09b7ff5b7468f3818d3">fdOut</a> () const</td></tr>
-<tr class="memdesc:a72c47d7120cba09b7ff5b7468f3818d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file number used for output.  <a href="#a72c47d7120cba09b7ff5b7468f3818d3">More...</a><br /></td></tr>
+<tr class="memitem:a72c47d7120cba09b7ff5b7468f3818d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#a72c47d7120cba09b7ff5b7468f3818d3">fdOut</a> () const</td></tr>
 <tr class="separator:a72c47d7120cba09b7ff5b7468f3818d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1a8b3b200f6ec92f4d5a584aed64671"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#ab1a8b3b200f6ec92f4d5a584aed64671">verbose</a> (bool v)</td></tr>
-<tr class="memdesc:ab1a8b3b200f6ec92f4d5a584aed64671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify if <a class="el" href="a00569.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> must generate outputs or not.  <a href="#ab1a8b3b200f6ec92f4d5a584aed64671">More...</a><br /></td></tr>
+<tr class="memitem:ab1a8b3b200f6ec92f4d5a584aed64671"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#ab1a8b3b200f6ec92f4d5a584aed64671">verbose</a> (bool v)</td></tr>
 <tr class="separator:ab1a8b3b200f6ec92f4d5a584aed64671"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec5e4407f0783c43915f389aa2d19ea0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#aec5e4407f0783c43915f389aa2d19ea0">verbose</a> () const</td></tr>
-<tr class="memdesc:aec5e4407f0783c43915f389aa2d19ea0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if <a class="el" href="a00569.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> must generate outputs or not.  <a href="#aec5e4407f0783c43915f389aa2d19ea0">More...</a><br /></td></tr>
+<tr class="memitem:aec5e4407f0783c43915f389aa2d19ea0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#aec5e4407f0783c43915f389aa2d19ea0">verbose</a> () const</td></tr>
 <tr class="separator:aec5e4407f0783c43915f389aa2d19ea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee88e98a76d8432604f88f90dc589904"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#aee88e98a76d8432604f88f90dc589904">fail</a> () const</td></tr>
-<tr class="memdesc:aee88e98a76d8432604f88f90dc589904"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the fail code of the last call to <a class="el" href="a00573.html#ac7a85f80fdc949c18c532da62ddc8c8f" title="Solve the problem . ">QLDDirect::solve</a>.  <a href="#aee88e98a76d8432604f88f90dc589904">More...</a><br /></td></tr>
+<tr class="memitem:aee88e98a76d8432604f88f90dc589904"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#aee88e98a76d8432604f88f90dc589904">fail</a> () const</td></tr>
 <tr class="separator:aee88e98a76d8432604f88f90dc589904"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8630de2c7c9103f6543796198300046e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#a8630de2c7c9103f6543796198300046e">problem</a> (int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1)</td></tr>
-<tr class="memdesc:a8630de2c7c9103f6543796198300046e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate the memory necessary to solve a problem with the given dimensions.  <a href="#a8630de2c7c9103f6543796198300046e">More...</a><br /></td></tr>
+<tr class="memitem:a8630de2c7c9103f6543796198300046e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#a8630de2c7c9103f6543796198300046e">problem</a> (int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1)</td></tr>
 <tr class="separator:a8630de2c7c9103f6543796198300046e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e1b21ddca097cc830ea46757c4dd46e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#a4e1b21ddca097cc830ea46757c4dd46e">result</a> () const</td></tr>
-<tr class="memdesc:a4e1b21ddca097cc830ea46757c4dd46e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the result from the latest call to <a class="el" href="a00573.html#ac7a85f80fdc949c18c532da62ddc8c8f" title="Solve the problem . ">QLDDirect::solve</a>.  <a href="#a4e1b21ddca097cc830ea46757c4dd46e">More...</a><br /></td></tr>
+<tr class="memitem:a4e1b21ddca097cc830ea46757c4dd46e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#a4e1b21ddca097cc830ea46757c4dd46e">result</a> () const</td></tr>
 <tr class="separator:a4e1b21ddca097cc830ea46757c4dd46e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f5a52d37a75adca29ad34a1fca686d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00573.html#a6f5a52d37a75adca29ad34a1fca686d1">multipliers</a> () const</td></tr>
-<tr class="memdesc:a6f5a52d37a75adca29ad34a1fca686d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the lagrange multipliers associated with results, with the multipliers corresponding to equality constraints first, then to inequality constraints, then lower bounds, then upper bounds.  <a href="#a6f5a52d37a75adca29ad34a1fca686d1">More...</a><br /></td></tr>
+<tr class="memitem:a6f5a52d37a75adca29ad34a1fca686d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#a6f5a52d37a75adca29ad34a1fca686d1">multipliers</a> () const</td></tr>
 <tr class="separator:a6f5a52d37a75adca29ad34a1fca686d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7a85f80fdc949c18c532da62ddc8c8f"><td class="memTemplParams" colspan="2">template&lt;typename MatObj , typename VecObj , typename MatConstr , typename VecConstr , typename VecVar &gt; </td></tr>
-<tr class="memitem:ac7a85f80fdc949c18c532da62ddc8c8f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="a00573.html#ac7a85f80fdc949c18c532da62ddc8c8f">solve</a> (const MatrixBase&lt; MatObj &gt; &amp;Q, const MatrixBase&lt; VecObj &gt; &amp;c, const MatrixBase&lt; MatConstr &gt; &amp;A, const MatrixBase&lt; VecConstr &gt; &amp;b, const MatrixBase&lt; VecVar &gt; &amp;xl, const MatrixBase&lt; VecVar &gt; &amp;xu, int nreq, bool isDecomp=false, double eps=1e-12)</td></tr>
-<tr class="memdesc:ac7a85f80fdc949c18c532da62ddc8c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the problem </p><p class="formulaDsp">
-\begin{align} \underset{{x} \in \mathbb{R}^n}{\text{minimize}} &amp; \ \frac{1}{2}{x^TQx} + {c^Tx} \nonumber \\ \text{subject to} &amp; \ A_{1:m_e} x + b_{1:m_e} = 0 \\ &amp; \ A_{m_e+1:\mbox{end}} x + b_{m_e+1:\mbox{end}} \geq 0 \\ &amp; \ x_l \leq x \leq x_u \end{align}
-</p>
-<p>.  <a href="#ac7a85f80fdc949c18c532da62ddc8c8f">More...</a><br /></td></tr>
+<tr class="memitem:ac7a85f80fdc949c18c532da62ddc8c8f"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classEigen_1_1QLDDirect.html#ac7a85f80fdc949c18c532da62ddc8c8f">solve</a> (const MatrixBase&lt; MatObj &gt; &amp;Q, const MatrixBase&lt; VecObj &gt; &amp;c, const MatrixBase&lt; MatConstr &gt; &amp;A, const MatrixBase&lt; VecConstr &gt; &amp;b, const MatrixBase&lt; VecVar &gt; &amp;xl, const MatrixBase&lt; VecVar &gt; &amp;xu, int nreq, bool isDecomp=false, double eps=1e-12)</td></tr>
 <tr class="separator:ac7a85f80fdc949c18c532da62ddc8c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A lightweight wrapper of the ql algorithm by Professor Schittkowski. </p>
-<p>It handles the workspace memory to be passed to the solver along with the problem. </p>
+<div class="textblock"><p>A lightweight wrapper of the ql algorithm by Professor Schittkowski. It handles the workspace memory to be passed to the solver along with the problem. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa3024e86ed4f27c784488ea036bee87b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa3024e86ed4f27c784488ea036bee87b">&#9670;&nbsp;</a></span>QLDDirect() <span class="overload">[1/2]</span></h2>
@@ -142,16 +125,14 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> Eigen::QLDDirect::QLDDirect </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> Eigen::QLDDirect::QLDDirect </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Create a solver without allocating memory. </p>
-<p>A call to <a class="el" href="a00573.html#a8630de2c7c9103f6543796198300046e" title="Allocate the memory necessary to solve a problem with the given dimensions. ">QLDDirect::problem</a> will be necessary before calling <a class="el" href="a00573.html#ac7a85f80fdc949c18c532da62ddc8c8f" title="Solve the problem . ">QLDDirect::solve</a> </p>
+<p>Create a solver without allocating memory. A call to <a class="el" href="classEigen_1_1QLDDirect.html#a8630de2c7c9103f6543796198300046e">QLDDirect::problem</a> will be necessary before calling <a class="el" href="classEigen_1_1QLDDirect.html#ac7a85f80fdc949c18c532da62ddc8c8f">QLDDirect::solve</a> </p>
 
 </div>
 </div>
@@ -162,7 +143,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> Eigen::QLDDirect::QLDDirect </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> Eigen::QLDDirect::QLDDirect </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>nrvar</em>, </td>
@@ -204,9 +185,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Create a solver and allocate the memory necessary to solve a problem with the given dimensions. </p>
-<p>See also <a class="el" href="a00573.html#a8630de2c7c9103f6543796198300046e" title="Allocate the memory necessary to solve a problem with the given dimensions. ">QLDDirect::problem</a> </p>
+<p>Create a solver and allocate the memory necessary to solve a problem with the given dimensions. See also <a class="el" href="classEigen_1_1QLDDirect.html#a8630de2c7c9103f6543796198300046e">QLDDirect::problem</a> </p>
 
 </div>
 </div>
@@ -218,16 +197,14 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int Eigen::QLDDirect::fail </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int Eigen::QLDDirect::fail </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Return the fail code of the last call to <a class="el" href="a00573.html#ac7a85f80fdc949c18c532da62ddc8c8f" title="Solve the problem . ">QLDDirect::solve</a>. </p>
-<p>0 means succes. </p>
+<p>Return the fail code of the last call to <a class="el" href="classEigen_1_1QLDDirect.html#ac7a85f80fdc949c18c532da62ddc8c8f">QLDDirect::solve</a>. 0 means succes. </p>
 
 </div>
 </div>
@@ -238,7 +215,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void Eigen::QLDDirect::fdOut </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void Eigen::QLDDirect::fdOut </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>fd</em></td><td>)</td>
@@ -246,7 +223,6 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>Specify a file number for output (Fortran unit specification). </p>
 
 </div>
@@ -258,15 +234,14 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int Eigen::QLDDirect::fdOut </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> int Eigen::QLDDirect::fdOut </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Get the file number used for output. </p>
+<p>Get the file number used for output </p>
 
 </div>
 </div>
@@ -277,14 +252,13 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd&amp; Eigen::QLDDirect::multipliers </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd&amp; Eigen::QLDDirect::multipliers </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>Return the lagrange multipliers associated with results, with the multipliers corresponding to equality constraints first, then to inequality constraints, then lower bounds, then upper bounds. </p>
 
 </div>
@@ -296,7 +270,7 @@ Public Member Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void Eigen::QLDDirect::problem </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void Eigen::QLDDirect::problem </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>nrvar</em>, </td>
@@ -332,9 +306,7 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Allocate the memory necessary to solve a problem with the given dimensions. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Allocate the memory necessary to solve a problem with the given dimensions. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">nrvar</td><td>Size of the variable vector \(x\). </td></tr>
     <tr><td class="paramname">nreq</td><td>Number of equality constraints, i.e. the row size of \(A_{eq}\). </td></tr>
@@ -344,14 +316,14 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>For a column-major matrix (which is the default case in <a class="el" href="a00021.html">Eigen</a> and what <a class="el" href="a00569.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> is expecting), the matrix values are stored in a simple, 1-d array, one column after the other. Often the column are place in this arry one right after the other but this needs not be the case: there can be unused values in the array between the values of two columns. The offset between the start of two consecutive columns in the array is called the leading dimension. For a matrix <em>M</em> with leading dimension <em>ld</em>, and data ordered in an array <em>data</em>, element M(i,j) is found at data[i+ld*j]. <br />
+<dl class="section note"><dt>Note</dt><dd>For a column-major matrix (which is the default case in <a class="el" href="namespaceEigen.html">Eigen</a> and what <a class="el" href="classEigen_1_1QLD.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> is expecting), the matrix values are stored in a simple, 1-d array, one column after the other. Often the column are place in this arry one right after the other but this needs not be the case: there can be unused values in the array between the values of two columns. The offset between the start of two consecutive columns in the array is called the leading dimension. For a matrix <em>M</em> with leading dimension <em>ld</em>, and data ordered in an array <em>data</em>, element M(i,j) is found at data[i+ld*j]. <br />
 As an example, consider the matrix <p class="formulaDsp">
 \begin{align} \begin{bmatrix} 4 &amp; 3 &amp; 7 &amp; 2 \\ 2 &amp; 8 &amp; 1 &amp; 5 \\ 6 &amp; 5 &amp; 1 &amp; 2 \end{bmatrix} \end{align}
 </p>
  It can be stored with a leading dimension of 5 as <br />
 [4, 2, 6, x, x, 3, 8, 5, x, x, 7, 1, 1, x, x, 2, 5, 2] <br />
 where the x are unimportant value with respect to this matrix.<br />
-For classical <a class="el" href="a00021.html">Eigen</a> matrices like <em>MatrixXd</em>, ld is equal to the row size, but if for example we consider a matrix <em>B</em> that is the block of another one <em>M</em>, the leading dimension of <em>B</em> will be the row dimension of <em>M</em>. </dd></dl>
+For classical <a class="el" href="namespaceEigen.html">Eigen</a> matrices like <em>MatrixXd</em>, ld is equal to the row size, but if for example we consider a matrix <em>B</em> that is the block of another one <em>M</em>, the leading dimension of <em>B</em> will be the row dimension of <em>M</em>. </dd></dl>
 
 </div>
 </div>
@@ -362,15 +334,14 @@ For classical <a class="el" href="a00021.html">Eigen</a> matrices like <em>Matri
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd&amp; Eigen::QLDDirect::result </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> const VectorXd&amp; Eigen::QLDDirect::result </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Return the result from the latest call to <a class="el" href="a00573.html#ac7a85f80fdc949c18c532da62ddc8c8f" title="Solve the problem . ">QLDDirect::solve</a>. </p>
+<p>Return the result from the latest call to <a class="el" href="classEigen_1_1QLDDirect.html#ac7a85f80fdc949c18c532da62ddc8c8f">QLDDirect::solve</a>. </p>
 
 </div>
 </div>
@@ -451,11 +422,9 @@ template&lt;typename MatObj , typename VecObj , typename MatConstr , typename Ve
   </tr>
 </table>
 </div><div class="memdoc">
-
 <p>Solve the problem </p><p class="formulaDsp">
 \begin{align} \underset{{x} \in \mathbb{R}^n}{\text{minimize}} &amp; \ \frac{1}{2}{x^TQx} + {c^Tx} \nonumber \\ \text{subject to} &amp; \ A_{1:m_e} x + b_{1:m_e} = 0 \\ &amp; \ A_{m_e+1:\mbox{end}} x + b_{m_e+1:\mbox{end}} \geq 0 \\ &amp; \ x_l \leq x \leq x_u \end{align}
 </p>
-<p>. </p>
 <p>For a positive definite matrix \(Q\), we have the Cholesky decomposition \(Q = R^T R\) with \(R\) upper triangular. If <code>isDecomp</code> is <em>true</em>, \(R\) should be given instead of \(Q\). Only the upper triangular part of \(R\) will be used.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -472,8 +441,6 @@ template&lt;typename MatObj , typename VecObj , typename MatConstr , typename Ve
   </dd>
 </dl>
 
-<p class="reference">Referenced by <a class="el" href="a00569.html#ac2325b12a08e8ee3d930eb8c26d66b35">Eigen::QLD::solve()</a>.</p>
-
 </div>
 </div>
 <a id="ab1a8b3b200f6ec92f4d5a584aed64671"></a>
@@ -483,7 +450,7 @@ template&lt;typename MatObj , typename VecObj , typename MatConstr , typename Ve
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void Eigen::QLDDirect::verbose </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> void Eigen::QLDDirect::verbose </td>
           <td>(</td>
           <td class="paramtype">bool&#160;</td>
           <td class="paramname"><em>v</em></td><td>)</td>
@@ -491,8 +458,7 @@ template&lt;typename MatObj , typename VecObj , typename MatConstr , typename Ve
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Specify if <a class="el" href="a00569.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> must generate outputs or not. </p>
+<p>Specify if <a class="el" href="classEigen_1_1QLD.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> must generate outputs or not. </p>
 
 </div>
 </div>
@@ -503,26 +469,28 @@ template&lt;typename MatObj , typename VecObj , typename MatConstr , typename Ve
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="a00011.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> bool Eigen::QLDDirect::verbose </td>
+          <td class="memname"><a class="el" href="eigen__qld__api_8h.html#a20e76b3ac4632f4e9871d76caad2fc2f">EIGEN_QLD_API</a> bool Eigen::QLDDirect::verbose </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Check if <a class="el" href="a00569.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> must generate outputs or not. </p>
+<p>Check if <a class="el" href="classEigen_1_1QLD.html" title="A wrapper of the ql algorithm by Professor Schittkowski, with some convention changes on the way the ...">QLD</a> must generate outputs or not. </p>
 
 </div>
 </div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/eigen-qld/<a class="el" href="QLDDirect_8h_source.html">QLDDirect.h</a></li>
+</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.8.6-->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="a00021.html">Eigen</a></li><li class="navelem"><a class="el" href="a00573.html">QLDDirect</a></li>
-    <li class="footer">Generated on Mon Feb 10 2020 09:17:35 for eigen-qld by
+    <li class="navelem"><a class="el" href="namespaceEigen.html">Eigen</a></li><li class="navelem"><a class="el" href="classEigen_1_1QLDDirect.html">QLDDirect</a></li>
+    <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

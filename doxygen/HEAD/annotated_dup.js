@@ -1,4 +1,4 @@
 var annotated_dup =
 [
-    [ "Eigen", "a00021.html", "a00021" ]
+    [ "Eigen", "namespaceEigen.html", "namespaceEigen" ]
 ];

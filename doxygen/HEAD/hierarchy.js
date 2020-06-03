@@ -1,6 +1,6 @@
 var hierarchy =
 [
-    [ "Eigen::QLDDirect", "a00573.html", [
-      [ "Eigen::QLD", "a00569.html", null ]
+    [ "Eigen::QLDDirect", "classEigen_1_1QLDDirect.html", [
+      [ "Eigen::QLD", "classEigen_1_1QLD.html", null ]
     ] ]
 ];
