@@ -1,7 +1,7 @@
 # eigen-qld
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
-[ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/eigen-qld%3Agergondet/images/download.svg) ](https://bintray.com/gergondet/multi-contact/eigen-qld%3Agergondet/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/eigen-qld%3Amulti-contact/images/download.svg) ](https://bintray.com/gergondet/multi-contact/eigen-qld%3Amulti-contact/_latestVersion)
 [![CI](https://github.com/jrl-umi3218/eigen-qld/workflows/CI%20of%20eigen-qld/badge.svg?branch=master)](https://github.com/jrl-umi3218/eigen-qld/actions?query=workflow%3A%22CI+of+eigen-qld%22)
 [![Documentation](https://img.shields.io/badge/doxygen-online-brightgreen?logo=read-the-docs&style=flat)](http://jrl-umi3218.github.io/eigen-qld/doxygen/HEAD/index.html)
 
@@ -40,6 +40,18 @@ sudo sh -c 'echo "deb https://dl.bintray.com/gergondet/multi-contact-head $(lsb_
 sudo apt update
 # Install eigen-qld packages
 sudo apt install libeigen-qld-dev python-eigen-qld python3-eigen-qld
+```
+
+## Conan
+
+Install the latest version using [conan](https://conan.io/)
+
+```bash
+conan remote add multi-contact https://api.bintray.com/conan/gergondet/multi-contact
+# Install the latest release
+conan install eigen-qld/latest@multi-contact/stable
+# Or install the latest development version
+# conan install eigen-qld/latest@multi-contact/dev
 ```
 
 ## Homebrew OS X install

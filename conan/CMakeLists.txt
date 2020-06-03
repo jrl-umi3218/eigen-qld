@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
 
-message(STATUS "Conan FlatBuffers Wrapper")
-
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
