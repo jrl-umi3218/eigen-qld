@@ -46,6 +46,7 @@ if(${USE_FORTRAN_SUBDIRECTORY})
     install(FILES ${qld_fortran_SHARED_LIBRARY} DESTINATION ${CMAKE_INSTALL_BINDIR})
     install(FILES ${qld_fortran_STATIC_LIBRARY} DESTINATION ${CMAKE_INSTALL_LIBDIR})
     set(PACKAGE_EXTRA_MACROS "
+get_filename_component(PACKAGE_PREFIX_DIR \"\${CMAKE_CURRENT_LIST_DIR}/../../../\" ABSOLUTE)
 if(NOT TARGET qld_fortran)
   add_library(qld_fortran STATIC IMPORTED)
   set_target_properties(qld_fortran PROPERTIES
