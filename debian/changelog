@@ -1,3 +1,9 @@
+eigen-qld (1.2.1-1ubuntu1) unstable; urgency=medium
+
+  * Update upstream version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Tue, 08 Sep 2020 19:54:59 +0800
+
 eigen-qld (1.2.0-1ubuntu1) unstable; urgency=medium
 
   * Upstream version updated
