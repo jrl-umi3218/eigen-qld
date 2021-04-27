@@ -1,7 +1,7 @@
 # eigen-qld
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-green.svg)](https://opensource.org/licenses/BSD-2-Clause)
-[ ![Download](https://api.bintray.com/packages/gergondet/multi-contact/eigen-qld%3Amulti-contact/images/download.svg) ](https://bintray.com/gergondet/multi-contact/eigen-qld%3Amulti-contact/_latestVersion)
+[![Hosted By: Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith)](https://cloudsmith.com)
 [![CI](https://github.com/jrl-umi3218/eigen-qld/workflows/CI%20of%20eigen-qld/badge.svg?branch=master)](https://github.com/jrl-umi3218/eigen-qld/actions?query=workflow%3A%22CI+of+eigen-qld%22)
 [![Documentation](https://img.shields.io/badge/doxygen-online-brightgreen?logo=read-the-docs&style=flat)](http://jrl-umi3218.github.io/eigen-qld/doxygen/HEAD/index.html)
 
@@ -12,33 +12,25 @@ Installing
 
 ## Ubuntu LTS (16.04, 18.04, 20.04)
 
-To setup the release versions:
+You must first setup our package mirror:
 
-```bash
-# Make sure you have required tools
-sudo apt install apt-transport-https lsb-release
-# Add our key
-sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key 892EA6EE273707C6495A6FB6220D644C64666806
-# Add our repository
-sudo sh -c 'echo "deb https://dl.bintray.com/gergondet/multi-contact-release $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/multi-contact.list'
-# Update packages list
-sudo apt update
-# Install eigen-qld packages
-sudo apt install libeigen-qld-dev python-eigen-qld python3-eigen-qld
+```
+curl -1sLf \
+  'https://dl.cloudsmith.io/public/mc-rtc/stable/setup.deb.sh' \
+  | sudo -E bash
 ```
 
-To setup the packages from the master branch:
+You can also choose the head mirror which will have the latest version of this package:
+
+```
+curl -1sLf \
+  'https://dl.cloudsmith.io/public/mc-rtc/stable/setup.deb.sh' \
+  | sudo -E bash
+```
+
+You can then install the package:
 
 ```bash
-# Make sure you have required tools
-sudo apt install apt-transport-https lsb-release
-# Add our key
-sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key 892EA6EE273707C6495A6FB6220D644C64666806
-# Add our repository
-sudo sh -c 'echo "deb https://dl.bintray.com/gergondet/multi-contact-head $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/multi-contact.list'
-# Update packages list
-sudo apt update
-# Install eigen-qld packages
 sudo apt install libeigen-qld-dev python-eigen-qld python3-eigen-qld
 ```
 
@@ -52,23 +44,6 @@ conan remote add multi-contact https://api.bintray.com/conan/gergondet/multi-con
 conan install eigen-qld/latest@multi-contact/stable
 # Or install the latest development version
 # conan install eigen-qld/latest@multi-contact/dev
-```
-
-## Homebrew OS X install
-
-Install from the command line using [Homebrew](brew.sh):
-
-```bash
-# install homebrew package manager
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-# install caskroom application manager
-brew install caskroom/cask/brew-cask
-# tap homebrew-science package repository
-brew tap homebrew/science
-# tap ahundt-robotics repository
-brew tap ahundt/robotics
-# install tasks and all its dependencies
-brew install eigen-qld
 ```
 
 ## Manually build from source
