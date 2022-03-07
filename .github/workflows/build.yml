@@ -56,22 +56,25 @@ jobs:
         build-type: ${{ matrix.build-type }}
         ubuntu: |
           apt: cython cython3 python-nose python3-nose python-numpy python3-numpy python-coverage python3-coverage python-setuptools python3-setuptools libeigen3-dev doxygen doxygen-latex libboost-all-dev
+          github:
+            - path: jrl-umi3218/Eigen3ToPython
         macos: |
           cask: gfortran
           brew: eigen boost
           pip: Cython coverage nose numpy
+          github:
+            - path: jrl-umi3218/Eigen3ToPython
         windows: |
           pip: Cython coverage nose numpy
           github:
             - path: eigenteam/eigen-git-mirror
               ref: 3.3.7
-        github: |
-          - path: jrl-umi3218/Eigen3ToPython
     - name: Build and test
       uses: jrl-umi3218/github-actions/build-cmake-project@master
       with:
         compiler: ${{ matrix.compiler }}
         build-type: ${{ matrix.build-type }}
+        windows-options: -DPYTHON_BINDING:BOOL=OFF
     - name: Upload documentation
       # Only run on master branch and for one configuration
       if: matrix.os == 'ubuntu-18.04' && matrix.build-type == 'RelWithDebInfo' && matrix.compiler == 'gcc' && github.ref == 'refs/heads/master'
