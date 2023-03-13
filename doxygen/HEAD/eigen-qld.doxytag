@@ -41,13 +41,6 @@
     <includes id="eigen__qld__api_8h" name="eigen_qld_api.h" local="yes" imported="no">eigen_qld_api.h</includes>
     <class kind="class">Eigen::QLDDirect</class>
     <namespace>Eigen</namespace>
-    <member kind="function">
-      <type>int</type>
-      <name>ql_</name>
-      <anchorfile>namespaceEigen.html</anchorfile>
-      <anchor>a17aed4978be1d7c0edff37d31dae2a54</anchor>
-      <arglist>(const int *m, const int *me, const int *mmax, const int *n, const int *nmax, const int *mnn, const double *c, const double *d, const double *a, const double *b, const double *xl, const double *xu, double *x, double *u, const double *eps, const int *mode, const int *iout, int *ifail, const int *iprint, double *war, int *lwar, int *iwar, int *liwar)</arglist>
-    </member>
   </compound>
   <compound kind="class">
     <name>Eigen::QLD</name>
@@ -175,12 +168,5 @@
     <filename>namespaceEigen.html</filename>
     <class kind="class">Eigen::QLD</class>
     <class kind="class">Eigen::QLDDirect</class>
-    <member kind="function">
-      <type>int</type>
-      <name>ql_</name>
-      <anchorfile>namespaceEigen.html</anchorfile>
-      <anchor>a17aed4978be1d7c0edff37d31dae2a54</anchor>
-      <arglist>(const int *m, const int *me, const int *mmax, const int *n, const int *nmax, const int *mnn, const double *c, const double *d, const double *a, const double *b, const double *xl, const double *xu, double *x, double *u, const double *eps, const int *mode, const int *iout, int *ifail, const int *iprint, double *war, int *lwar, int *iwar, int *liwar)</arglist>
-    </member>
   </compound>
 </tagfile>

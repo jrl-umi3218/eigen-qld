@@ -1,7 +1,6 @@
 var NAVTREEINDEX0 =
 {
 "QLDDirect_8h.html":[2,0,0,0,2],
-"QLDDirect_8h.html#a17aed4978be1d7c0edff37d31dae2a54":[2,0,0,0,2,1],
 "QLDDirect_8h_source.html":[2,0,0,0,2],
 "QLD_8h.html":[2,0,0,0,1],
 "QLD_8h_source.html":[2,0,0,0,1],
@@ -41,8 +40,6 @@ var NAVTREEINDEX0 =
 "index.html":[],
 "namespaceEigen.html":[0,0,0],
 "namespaceEigen.html":[1,0,0],
-"namespacemembers.html":[0,1,0],
-"namespacemembers_func.html":[0,1,1],
 "namespaces.html":[0,0],
 "pages.html":[]
 };
