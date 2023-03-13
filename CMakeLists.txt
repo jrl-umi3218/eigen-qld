@@ -15,6 +15,7 @@ set(PROJECT_USE_CMAKE_EXPORT TRUE)
 include(cmake/base.cmake)
 include(cmake/cython/cython.cmake)
 include(cmake/msvc-specific.cmake)
+include(cmake/version-script.cmake)
 
 # Disable -Werror on Unix for now.
 set(CXX_DISABLE_WERROR True)

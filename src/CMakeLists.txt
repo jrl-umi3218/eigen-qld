@@ -29,6 +29,7 @@ if(TARGET Eigen3::Eigen)
 else()
   target_include_directories(eigen-qld SYSTEM PUBLIC "${EIGEN3_INCLUDE_DIR}")
 endif()
+add_version_script(eigen-qld "${CMAKE_CURRENT_SOURCE_DIR}/version-script.lds")
 
 if(${USE_FORTRAN_SUBDIRECTORY})
   include(CMakeAddFortranSubdirectory)

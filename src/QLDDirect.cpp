@@ -8,6 +8,30 @@
 namespace Eigen
 {
 
+extern "C" int ql_(const int * m,
+                   const int * me,
+                   const int * mmax,
+                   const int * n,
+                   const int * nmax,
+                   const int * mnn,
+                   const double * c,
+                   const double * d,
+                   const double * a,
+                   const double * b,
+                   const double * xl,
+                   const double * xu,
+                   double * x,
+                   double * u,
+                   const double * eps,
+                   const int * mode,
+                   const int * iout,
+                   int * ifail,
+                   const int * iprint,
+                   double * war,
+                   int * lwar,
+                   int * iwar,
+                   int * liwar);
+
 QLDDirect::QLDDirect() : fdOut_(0), verbose_(false), fail_(0), U_(), WAR_(), IWAR_() {}
 
 QLDDirect::QLDDirect(int nrvar, int nreq, int nrineq, int ldq, int lda, bool verbose)
@@ -67,6 +91,34 @@ const VectorXd & QLDDirect::result() const
 const VectorXd & QLDDirect::multipliers() const
 {
   return U_;
+}
+
+int QLDDirect::fortran_ql(const int * m,
+                          const int * me,
+                          const int * mmax,
+                          const int * n,
+                          const int * nmax,
+                          const int * mnn,
+                          const double * c,
+                          const double * d,
+                          const double * a,
+                          const double * b,
+                          const double * xl,
+                          const double * xu,
+                          double * x,
+                          double * u,
+                          const double * eps,
+                          const int * mode,
+                          const int * iout,
+                          int * ifail,
+                          const int * iprint,
+                          double * war,
+                          int * lwar,
+                          int * iwar,
+                          int * liwar)
+{
+  return ql_(m, me, mmax, n, nmax, mnn, c, d, a, b, xl, xu, x, u, eps, mode, iout, ifail, iprint, war, lwar, iwar,
+             liwar);
 }
 
 } // namespace Eigen
