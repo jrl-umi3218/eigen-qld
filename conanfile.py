@@ -11,7 +11,7 @@ base = python_requires("Eigen3ToPython/latest@multi-contact/dev")
 
 class EigenQLDConan(base.Eigen3ToPythonConan):
     name = "eigen-qld"
-    version = "1.2.2"
+    version = "1.2.3"
     description = "QLD QP solver through Eigen3 library"
     topics = ("robotics", "optimization", "qp", "python")
     url = "https://github.com/jrl-umi3218/eigen-qld"

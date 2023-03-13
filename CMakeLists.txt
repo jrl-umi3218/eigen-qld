@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(PROJECT_NAME eigen-qld)
 set(PROJECT_DESCRIPTION "QLD QP solver through Eigen3 library.")
 set(PROJECT_URL "https://github.com/jrl-umi3218/eigen-qld")
-set(PROJECT_VERSION 1.2.2)
+set(PROJECT_VERSION 1.2.3)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 include(cmake/base.cmake)
