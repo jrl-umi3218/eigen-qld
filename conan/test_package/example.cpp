@@ -1,5 +1,4 @@
 #include <eigen-qld/QLD.h>
-
 #include <iostream>
 
 struct QP1
@@ -21,21 +20,17 @@ struct QP1
     XU.resize(nrvar);
     X.resize(nrvar);
 
-
-    Aeq << 1., -1., 1., 0., 3., 1.,
-           -1., 0., -3., -4., 5., 6.,
-           2., 5., 3., 0., 1., 0.;
+    Aeq << 1., -1., 1., 0., 3., 1., -1., 0., -3., -4., 5., 6., 2., 5., 3., 0., 1., 0.;
     Beq << 1., 2., 3.;
 
-    Aineq << 0., 1., 0., 1., 2., -1.,
-             -1., 0., 2., 1., 1., 0.;
+    Aineq << 0., 1., 0., 1., 2., -1., -1., 0., 2., 1., 1., 0.;
     Bineq << -1., 2.5;
 
-    //with  x between ci and cs:
-    XL << -1000., -10000., 0., -1000., -1000.,-1000.;
+    // with  x between ci and cs:
+    XL << -1000., -10000., 0., -1000., -1000., -1000.;
     XU << 10000., 100., 1.5, 100., 100., 1000.;
 
-    //and minimize 0.5*x'*Q*x + p'*x with
+    // and minimize 0.5*x'*Q*x + p'*x with
     C << 1., 2., 3., 4., 5., 6.;
     Q.setIdentity();
 
