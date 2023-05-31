@@ -3,7 +3,7 @@
   <compound kind="file">
     <name>eigen_qld_api.h</name>
     <path>/home/runner/work/eigen-qld/eigen-qld/src/eigen-qld/</path>
-    <filename>eigen__qld__api_8h</filename>
+    <filename>eigen__qld__api_8h.html</filename>
     <member kind="define">
       <type>#define</type>
       <name>EIGEN_QLD_DLLIMPORT</name>
@@ -29,7 +29,7 @@
   <compound kind="file">
     <name>QLD.h</name>
     <path>/home/runner/work/eigen-qld/eigen-qld/src/eigen-qld/</path>
-    <filename>QLD_8h</filename>
+    <filename>QLD_8h.html</filename>
     <includes id="QLDDirect_8h" name="QLDDirect.h" local="yes" imported="no">QLDDirect.h</includes>
     <class kind="class">Eigen::QLD</class>
     <namespace>Eigen</namespace>
@@ -37,7 +37,7 @@
   <compound kind="file">
     <name>QLDDirect.h</name>
     <path>/home/runner/work/eigen-qld/eigen-qld/src/eigen-qld/</path>
-    <filename>QLDDirect_8h</filename>
+    <filename>QLDDirect_8h.html</filename>
     <includes id="eigen__qld__api_8h" name="eigen_qld_api.h" local="yes" imported="no">eigen_qld_api.h</includes>
     <class kind="class">Eigen::QLDDirect</class>
     <namespace>Eigen</namespace>
@@ -68,10 +68,10 @@
       <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1)</arglist>
     </member>
     <member kind="function">
-      <type>EIGEN_QLD_API const VectorXd &amp;</type>
+      <type>const EIGEN_QLD_API VectorXd &amp;</type>
       <name>multipliers</name>
       <anchorfile>classEigen_1_1QLD.html</anchorfile>
-      <anchor>a9bd9163d8f684fafd15699836045397f</anchor>
+      <anchor>af882d607847901c2c5e2c966c3f347db</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -142,17 +142,17 @@
       <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1)</arglist>
     </member>
     <member kind="function">
-      <type>EIGEN_QLD_API const VectorXd &amp;</type>
+      <type>const EIGEN_QLD_API VectorXd &amp;</type>
       <name>result</name>
       <anchorfile>classEigen_1_1QLDDirect.html</anchorfile>
-      <anchor>a4e1b21ddca097cc830ea46757c4dd46e</anchor>
+      <anchor>a9e0ad330d6fdd6eecc75fb5a3a2acd00</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>EIGEN_QLD_API const VectorXd &amp;</type>
+      <type>const EIGEN_QLD_API VectorXd &amp;</type>
       <name>multipliers</name>
       <anchorfile>classEigen_1_1QLDDirect.html</anchorfile>
-      <anchor>a6f5a52d37a75adca29ad34a1fca686d1</anchor>
+      <anchor>a9291127a908f382a68057bddac8b9518</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
