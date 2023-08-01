@@ -7,7 +7,7 @@
 cdef extern from "private_typedefs.h":
   pass
 
-cimport c_eigen_qld
+cimport eigen_qld.c_eigen_qld as c_eigen_qld
 
 cimport eigen.eigen as eigen
 
