@@ -23,10 +23,12 @@ endif()
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 target_include_directories(
   eigen-qld PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-                   $<INSTALL_INTERFACE:include>)
+                   $<INSTALL_INTERFACE:include>
+)
 set_target_properties(
-  ${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR}
-                             VERSION ${PROJECT_VERSION})
+  ${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR} VERSION
+                                                                ${PROJECT_VERSION}
+)
 set_target_properties(eigen-qld PROPERTIES COMPILE_FLAGS "-DEIGEN_QLD_EXPORT")
 if(TARGET Eigen3::Eigen)
   target_link_libraries(eigen-qld PUBLIC Eigen3::Eigen)
@@ -44,20 +46,19 @@ if(${USE_FORTRAN_SUBDIRECTORY})
     RUNTIME_DIR qld_fortran # .dll location relative to root binary tree
     LIBRARIES qld_fortran # target libraries created
     LINK_LIBRARIES # link interface libraries
-    NO_EXTERNAL_INSTALL)
+    NO_EXTERNAL_INSTALL
+  )
   set(qld_fortran_SHARED_LIBRARY
       ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran${CMAKE_SHARED_LIBRARY_SUFFIX}
   )
   set(qld_fortran_STATIC_LIBRARY
       ${CMAKE_CURRENT_BINARY_DIR}/qld_fortran/libqld_fortran${CMAKE_STATIC_LIBRARY_SUFFIX}
   )
-  # Required here because qld_fortran is external to this project and install
-  # does not run
+  # Required here because qld_fortran is external to this project and install does not
+  # run
   if(WIN32)
-    install(FILES ${qld_fortran_SHARED_LIBRARY}
-            DESTINATION ${CMAKE_INSTALL_BINDIR})
-    install(FILES ${qld_fortran_STATIC_LIBRARY}
-            DESTINATION ${CMAKE_INSTALL_LIBDIR})
+    install(FILES ${qld_fortran_SHARED_LIBRARY} DESTINATION ${CMAKE_INSTALL_BINDIR})
+    install(FILES ${qld_fortran_STATIC_LIBRARY} DESTINATION ${CMAKE_INSTALL_LIBDIR})
     set(PACKAGE_EXTRA_MACROS
         "
 get_filename_component(PACKAGE_PREFIX_DIR \"\${CMAKE_CURRENT_LIST_DIR}/../../../\" ABSOLUTE)
@@ -68,7 +69,8 @@ if(NOT TARGET qld_fortran)
   )
 endif()
 "
-        PARENT_SCOPE)
+        PARENT_SCOPE
+    )
   endif()
   target_link_libraries(${PROJECT_NAME} PUBLIC qld_fortran)
 endif()
@@ -82,9 +84,11 @@ if(${USE_F2C})
   include(\"\${CMAKE_CURRENT_LIST_DIR}/find_eigen_qld_f2c.cmake\")
   find_eigen_qld_f2c()
   "
-      PARENT_SCOPE)
+      PARENT_SCOPE
+  )
   install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/find_eigen_qld_f2c.cmake"
-          DESTINATION "${CONFIG_INSTALL_DIR}")
+          DESTINATION "${CONFIG_INSTALL_DIR}"
+  )
 endif()
 
 install(
@@ -92,5 +96,6 @@ install(
   EXPORT "${TARGETS_EXPORT_NAME}"
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
 install(FILES ${HEADERS} DESTINATION ${INCLUDE_INSTALL_DESTINATION})

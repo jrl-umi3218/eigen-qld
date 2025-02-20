@@ -9,12 +9,14 @@ function(find_eigen_qld_f2c)
   find_path(
     F2C_INCLUDE_DIR
     NAMES f2c.h
-    HINTS ${F2C_PREFIX})
+    HINTS ${F2C_PREFIX}
+  )
 
   find_library(
     F2C_LIBRARY
     NAMES f2c
-    PATHS ${F2C_PREFIX})
+    PATHS ${F2C_PREFIX}
+  )
 
   include(FindPackageHandleStandardArgs)
   find_package_handle_standard_args(F2C DEFAULT_MSG F2C_LIBRARY F2C_INCLUDE_DIR)
@@ -23,6 +25,7 @@ function(find_eigen_qld_f2c)
     add_library(eigen-qld::f2c INTERFACE IMPORTED GLOBAL)
     set_target_properties(
       eigen-qld::f2c PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${F2C_INCLUDE_DIR}
-                                INTERFACE_LINK_LIBRARIES ${F2C_LIBRARY})
+                                INTERFACE_LINK_LIBRARIES ${F2C_LIBRARY}
+    )
   endif()
 endfunction()

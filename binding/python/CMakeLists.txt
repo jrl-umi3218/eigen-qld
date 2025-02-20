@@ -13,4 +13,5 @@ make_cython_bindings(
   PRIVATE_SOURCES
   eigen_qld/eigen_qld.pyx
   include/private_typedefs.h
-  tests/test_qp.py)
+  tests/test_qp.py
+)
