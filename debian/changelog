@@ -1,3 +1,9 @@
+eigen-qld (1.2.5-1debian1) unstable; urgency=medium
+
+  * Update upstream version
+
+ -- Pierre Gergondet <pierre.gergondet+ppa@gmail.com>  Thu, 6 Mar 2025 19:19:08 +0900
+
 eigen-qld (1.2.4-1debian1) unstable; urgency=medium
 
   * Update upstream version
