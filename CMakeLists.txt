@@ -28,21 +28,20 @@ if(WIN32)
 else()
   set(USE_FORTRAN_SUBDIRECTORY_DEFAULT OFF)
 endif()
-option(USE_FORTRAN_SUBDIRECTORY "Use cmake to generate sub project for fortran parts"
-       ${USE_FORTRAN_SUBDIRECTORY_DEFAULT}
-)
+option(USE_FORTRAN_SUBDIRECTORY
+       "Use cmake to generate sub project for fortran parts"
+       ${USE_FORTRAN_SUBDIRECTORY_DEFAULT})
 
 project(eigen-qld C CXX)
 
 add_project_dependency(Eigen3 REQUIRED)
 
-# For MSVC, set local environment variable to enable finding the built dll of the main
-# library when launching ctest with RUN_TESTS
+# For MSVC, set local environment variable to enable finding the built dll of
+# the main library when launching ctest with RUN_TESTS
 if(MSVC)
   if(USE_FORTRAN_SUBDIRECTORY)
     set(CMAKE_MSVCIDE_RUN_PATH
-        "\$(SolutionDir)/src/\$(Configuration);\$(SolutionDir)/src/qld_fortran"
-    )
+        "\$(SolutionDir)/src/\$(Configuration);\$(SolutionDir)/src/qld_fortran")
   else()
     set(CMAKE_MSVCIDE_RUN_PATH "\$(SolutionDir)/src/\$(Configuration)")
   endif()
