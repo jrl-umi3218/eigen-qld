@@ -2,7 +2,7 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 
 set(CMAKE_CXX_STANDARD 17)
 
