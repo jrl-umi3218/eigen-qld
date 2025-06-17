@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<tagfile>
+<tagfile doxygen_version="1.9.1">
   <compound kind="file">
     <name>eigen_qld_api.h</name>
     <path>/home/runner/work/eigen-qld/eigen-qld/src/eigen-qld/</path>
@@ -68,10 +68,10 @@
       <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1)</arglist>
     </member>
     <member kind="function">
-      <type>const EIGEN_QLD_API VectorXd &amp;</type>
+      <type>EIGEN_QLD_API const VectorXd &amp;</type>
       <name>multipliers</name>
       <anchorfile>classEigen_1_1QLD.html</anchorfile>
-      <anchor>af882d607847901c2c5e2c966c3f347db</anchor>
+      <anchor>a9bd9163d8f684fafd15699836045397f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -142,17 +142,17 @@
       <arglist>(int nrvar, int nreq, int nrineq, int ldq=-1, int lda=-1)</arglist>
     </member>
     <member kind="function">
-      <type>const EIGEN_QLD_API VectorXd &amp;</type>
+      <type>EIGEN_QLD_API const VectorXd &amp;</type>
       <name>result</name>
       <anchorfile>classEigen_1_1QLDDirect.html</anchorfile>
-      <anchor>a9e0ad330d6fdd6eecc75fb5a3a2acd00</anchor>
+      <anchor>a4e1b21ddca097cc830ea46757c4dd46e</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>const EIGEN_QLD_API VectorXd &amp;</type>
+      <type>EIGEN_QLD_API const VectorXd &amp;</type>
       <name>multipliers</name>
       <anchorfile>classEigen_1_1QLDDirect.html</anchorfile>
-      <anchor>a9291127a908f382a68057bddac8b9518</anchor>
+      <anchor>a6f5a52d37a75adca29ad34a1fca686d1</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
