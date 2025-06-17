@@ -38,8 +38,7 @@ jobs:
           github:
             - path: jrl-umi3218/Eigen3ToPython
         macos: |
-          cask: simply-fortran
-          brew: eigen boost
+          brew: eigen boost gcc
           pip: Cython coverage pytest numpy
           github:
             - path: jrl-umi3218/Eigen3ToPython
