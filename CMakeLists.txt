@@ -2,14 +2,14 @@
 # Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
 #
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 
 set(CMAKE_CXX_STANDARD 17)
 
 set(PROJECT_NAME eigen-qld)
 set(PROJECT_DESCRIPTION "QLD QP solver through Eigen3 library.")
 set(PROJECT_URL "https://github.com/jrl-umi3218/eigen-qld")
-set(PROJECT_VERSION 1.2.5)
+set(PROJECT_VERSION 1.2.6)
 set(PROJECT_USE_CMAKE_EXPORT TRUE)
 
 include(cmake/base.cmake)

@@ -1,3 +1,9 @@
+eigen-qld (1.2.6-1debian1) unstable; urgency=medium
+
+  * Update upstream version
+
+ -- Arnaud TANGUY <arn.tanguy+ppa@gmail.com>  Mon, 24 Nov 2025 11:00:00 +0000
+
 eigen-qld (1.2.5-1debian1) unstable; urgency=medium
 
   * Update upstream version
