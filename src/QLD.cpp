@@ -12,9 +12,7 @@ QLD::QLD() : QLDDirect(), A_(), B_() {}
 
 QLD::QLD(int nrvar, int nreq, int nrineq, int ldq, bool verbose)
 : QLDDirect(nrvar, nreq, nrineq, ldq, -1, verbose), A_(), B_()
-{
-  problem(nrvar, nreq, nrineq, ldq);
-}
+{ problem(nrvar, nreq, nrineq, ldq); }
 
 void QLD::problem(int nrvar, int nreq, int nrineq, int ldq)
 {
@@ -26,8 +24,6 @@ void QLD::problem(int nrvar, int nreq, int nrineq, int ldq)
 }
 
 const VectorXd & QLD::multipliers() const
-{
-  return QLDDirect::multipliers();
-}
+{ return QLDDirect::multipliers(); }
 
 } // namespace Eigen

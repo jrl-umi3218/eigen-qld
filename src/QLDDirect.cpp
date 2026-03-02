@@ -36,34 +36,22 @@ QLDDirect::QLDDirect() : fdOut_(0), verbose_(false), fail_(0), U_(), WAR_(), IWA
 
 QLDDirect::QLDDirect(int nrvar, int nreq, int nrineq, int ldq, int lda, bool verbose)
 : fdOut_(0), verbose_(verbose ? 1 : 0), fail_(0), U_(), WAR_(), IWAR_()
-{
-  problem(nrvar, nreq, nrineq, ldq, lda);
-}
+{ problem(nrvar, nreq, nrineq, ldq, lda); }
 
 void QLDDirect::fdOut(int fd)
-{
-  fdOut_ = fd;
-}
+{ fdOut_ = fd; }
 
 int QLDDirect::fdOut() const
-{
-  return fdOut_;
-}
+{ return fdOut_; }
 
 void QLDDirect::verbose(bool v)
-{
-  verbose_ = v ? 1 : 0;
-}
+{ verbose_ = v ? 1 : 0; }
 
 bool QLDDirect::verbose() const
-{
-  return verbose_;
-}
+{ return verbose_; }
 
 int QLDDirect::fail() const
-{
-  return fail_;
-}
+{ return fail_; }
 
 void QLDDirect::problem(int nrvar, int nreq, int nrineq, int ldq, int lda)
 {
@@ -84,14 +72,10 @@ void QLDDirect::problem(int nrvar, int nreq, int nrineq, int ldq, int lda)
 }
 
 const VectorXd & QLDDirect::result() const
-{
-  return X_;
-}
+{ return X_; }
 
 const VectorXd & QLDDirect::multipliers() const
-{
-  return U_;
-}
+{ return U_; }
 
 int QLDDirect::fortran_ql(const int * m,
                           const int * me,
