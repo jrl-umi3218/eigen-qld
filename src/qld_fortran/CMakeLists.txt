@@ -1,6 +1,8 @@
 #
-# Copyright 2012-2019 CNRS-UM LIRMM, CNRS-AIST JRL
+# Copyright 2012-2026 CNRS-UM LIRMM, CNRS-AIST JRL
 #
+
+cmake_minimum_required(VERSION 3.22)
 
 project(qld_fortran Fortran)
 
