@@ -8,6 +8,11 @@ on:
     branches:
       - '**'
 
+# cancel running workflows when pushing to the same branch/pr
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     strategy:
